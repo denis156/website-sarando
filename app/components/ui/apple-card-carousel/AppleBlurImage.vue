@@ -26,14 +26,13 @@ function handleLoad() {
 </script>
 
 <template>
-  <img
+  <NuxtImg
     class="transition duration-300 h-full w-full object-cover"
     :class="[props.class]"
     :src="src"
     :width="width"
     :height="height"
     loading="lazy"
-    decoding="async"
     :alt="alt"
     @load="handleLoad"
   />

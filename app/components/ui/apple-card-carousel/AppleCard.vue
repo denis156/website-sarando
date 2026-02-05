@@ -88,6 +88,7 @@ function handleClose() {
             class="relative w-full max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900 shadow-2xl"
           >
             <button
+              aria-label="Tutup"
               class="sticky top-4 right-0 ml-auto flex size-8 items-center justify-center rounded-full bg-black/10 hover:bg-black/20 dark:bg-white/10 dark:hover:bg-white/20 transition-colors backdrop-blur-md"
               @click="handleClose"
             >

@@ -20,6 +20,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const active = ref(0);
+const isMounted = ref(false);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const interval = ref<any>();
@@ -28,7 +29,17 @@ const activeTestimonialQuote = computed(() => {
   return props.testimonials[active.value]?.quote.split(" ") ?? [];
 });
 
+// Pre-generate deterministic rotations based on index to avoid hydration mismatch
+const rotations = computed(() => {
+  return props.testimonials.map((_, index) => {
+    // Use a seeded rotation based on index for consistency
+    const seed = index * 7;
+    return ((seed % 21) - 10);
+  });
+});
+
 onMounted(() => {
+  isMounted.value = true;
   if (props.autoplay) {
     interval.value = setInterval(handleNext, props.duration);
   }
@@ -53,8 +64,8 @@ function isActive(index: number) {
   return active.value === index;
 }
 
-function randomRotateY() {
-  return Math.floor(Math.random() * 21) - 10;
+function getRotation(index: number) {
+  return rotations.value[index] ?? 0;
 }
 </script>
 
@@ -74,13 +85,13 @@ function randomRotateY() {
                 opacity: 0,
                 scale: 0.9,
                 z: -100,
-                rotate: randomRotateY(),
+                rotate: getRotation(index),
               }"
               :animate="{
                 opacity: isActive(index) ? 1 : 0.7,
                 scale: isActive(index) ? 1 : 0.95,
                 z: isActive(index) ? 0 : -100,
-                rotate: isActive(index) ? 0 : randomRotateY(),
+                rotate: isActive(index) ? 0 : getRotation(index),
                 zIndex: isActive(index) ? 40 : testimonials.length + 2 - index,
                 y: isActive(index) ? [0, -80, 0] : 0,
               }"
@@ -88,7 +99,7 @@ function randomRotateY() {
                 opacity: 0,
                 scale: 0.9,
                 z: 100,
-                rotate: randomRotateY(),
+                rotate: getRotation(index),
               }"
               :transition="{
                 duration: 0.4,
@@ -129,9 +140,9 @@ function randomRotateY() {
             ease: 'easeInOut',
           }"
         >
-          <h3 class="text-xl md:text-4xl font-bold text-foreground">
+          <h4 class="text-xl md:text-4xl font-bold text-foreground">
             {{ props.testimonials[active]?.name }}
-          </h3>
+          </h4>
           <p class="text-sm md:text-lg text-muted-foreground mt-2">
             {{ props.testimonials[active]?.designation }}
           </p>
@@ -166,6 +177,7 @@ function randomRotateY() {
         </Motion>
         <div class="flex gap-4 pt-12 md:pt-0">
           <button
+            aria-label="Testimoni sebelumnya"
             class="group/button flex size-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             @click="handlePrev"
           >
@@ -175,6 +187,7 @@ function randomRotateY() {
             />
           </button>
           <button
+            aria-label="Testimoni berikutnya"
             class="group/button flex size-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             @click="handleNext"
           >

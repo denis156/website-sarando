@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'id',
+      },
       titleTemplate: '%s - Sarando',
       link: [
         { rel: 'icon', type: 'image/png', href: '/images/logo/submark-logo.png' },
@@ -36,6 +39,8 @@ export default defineNuxtConfig({
       Outfit: [300, 400, 500, 600, 700, 900],
     },
     display: 'swap',
+    preload: true,
+    prefetch: true,
   },
   icon: {
     clientBundle: {
@@ -44,6 +49,10 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
+  },
+  image: {
+    quality: 80,
+    format: ['webp', 'avif'],
   },
   shadcn: {
     /**

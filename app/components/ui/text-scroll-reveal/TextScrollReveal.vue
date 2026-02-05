@@ -44,10 +44,10 @@ onUnmounted(() => {
     :class="[$props.class]"
   >
     <div
-      class="sticky top-0 mx-auto flex h-1/2 max-w-4xl items-center bg-transparent px-4 py-20"
+      class="sticky top-0 mx-auto flex h-1/2 max-w-6xl items-center bg-transparent px-6 md:px-12 lg:px-16 py-20"
     >
       <p
-        class="flex flex-wrap p-5 text-2xl font-bold text-black/20 md:p-8 md:text-3xl lg:p-10 lg:text-4xl xl:text-5xl dark:text-white/20"
+        class="flex flex-wrap p-4 text-2xl font-bold text-foreground/30 md:p-6 md:text-3xl lg:p-8 lg:text-4xl xl:text-5xl 2xl:text-6xl"
       >
         <ClientOnly>
           <ScrollWord

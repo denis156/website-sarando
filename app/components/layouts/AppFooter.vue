@@ -20,7 +20,7 @@ const socialItems = [
       <!-- Brand -->
       <div class="col-span-2 space-y-4 md:space-y-6">
         <NuxtLink to="/" class="flex items-center gap-3">
-          <img src="/images/logo/submark-logo.png" alt="Sarando" class="w-10 h-10 md:w-12 md:h-12 object-contain" width="48" height="48" />
+          <NuxtImg src="/images/logo/submark-logo.png" alt="Sarando" class="w-10 h-10 md:w-12 md:h-12 object-contain" width="48" height="48" loading="lazy" />
           <span class="text-xl md:text-2xl font-bold tracking-tight text-foreground">SARANDO</span>
         </NuxtLink>
         <p class="text-sm md:text-base text-muted-foreground max-w-sm leading-relaxed">

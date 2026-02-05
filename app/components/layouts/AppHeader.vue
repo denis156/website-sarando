@@ -46,12 +46,13 @@ const itemVariants = (i: number) => ({
         to="/"
         class="flex items-center gap-3 transition-opacity hover:opacity-80"
       >
-        <img
+        <NuxtImg
           src="/images/logo/submark-logo.png"
           alt="Sarando"
           class="w-10 h-10 object-contain"
           width="40"
           height="40"
+          preload
         />
         <span
           class="hidden md:block text-xl font-bold tracking-tight text-foreground"

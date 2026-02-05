@@ -128,21 +128,22 @@ useHead({
               <div
                 class="absolute inset-0 bg-primary/20 blur-3xl rounded-full opacity-50"
               ></div>
-              <img
+              <NuxtImg
                 src="/images/logo/submark-logo.png"
                 alt="Sarando Logo"
                 class="relative w-full h-full object-contain"
+                loading="lazy"
               />
             </div>
 
             <!-- Text Section -->
             <div class="text-center space-y-4 max-w-xl z-10">
-              <h3
+              <h2
                 class="text-2xl md:text-5xl font-bold leading-tight text-foreground"
               >
                 Saatnya <span class="text-primary">Percaya</span> pada <br />
                 Karya Putra Daerah
-              </h3>
+              </h2>
               <p
                 class="text-sm md:text-lg text-muted-foreground leading-relaxed px-2"
               >
@@ -170,7 +171,13 @@ useHead({
     <section class="py-32 px-6">
       <div class="container max-w-7xl mx-auto">
         <div
-          v-motion-slide-visible-once-bottom
+          v-motion
+          :initial="{ opacity: 0, y: 60 }"
+          :visible-once="{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 800, ease: 'easeOut' },
+          }"
           class="flex flex-col md:flex-row justify-between items-start md:items-end mb-4 gap-4 border-b border-border/40 pb-6"
         >
           <div>
@@ -178,9 +185,9 @@ useHead({
               class="text-xs font-bold tracking-[0.2em] text-primary uppercase"
               >Ekspertise</span
             >
-            <h2 class="text-4xl md:text-7xl font-black mt-4 tracking-tighter">
+            <h3 class="text-4xl md:text-7xl font-black mt-4 tracking-tighter">
               Layanan<span class="text-muted-foreground/30">.</span>
-            </h2>
+            </h3>
           </div>
           <p
             class="text-muted-foreground/80 max-w-md text-left md:text-right text-lg font-light"
@@ -199,9 +206,9 @@ useHead({
               :index="index"
             >
               <div class="space-y-6">
-                <h3 class="text-2xl font-bold text-foreground">
+                <h4 class="text-2xl font-bold text-foreground">
                   {{ card.headline }}
-                </h3>
+                </h4>
                 <p class="text-muted-foreground leading-relaxed text-lg">
                   {{ card.description }}
                 </p>
@@ -227,17 +234,26 @@ useHead({
     <!-- ============================================ -->
     <section class="py-32 px-6">
       <div class="container max-w-7xl mx-auto">
-        <div v-motion-slide-visible-once-bottom class="mb-12 text-center">
+        <div
+          v-motion
+          :initial="{ opacity: 0, y: 60 }"
+          :visible-once="{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 800, ease: 'easeOut' },
+          }"
+          class="mb-12 text-center"
+        >
           <span
             class="text-xs font-bold tracking-[0.2em] text-primary uppercase"
             >Our Team</span
           >
-          <h2
+          <h3
             class="text-4xl md:text-6xl font-black leading-tight tracking-tight mt-4"
           >
             Inovasi Lahir dari <br />
             <span class="text-muted-foreground">Akar yang Kuat.</span>
-          </h2>
+          </h3>
         </div>
 
         <AnimatedTestimonials :testimonials="TESTIMONIALS" />
@@ -261,12 +277,12 @@ useHead({
           ></div>
 
           <div class="relative z-10 space-y-6 md:space-y-8">
-            <h2
+            <h3
               class="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-none"
             >
               Kenali Potensi
               <span class="text-primary italic pr-2">Digital Anda.</span>
-            </h2>
+            </h3>
             <p
               class="max-w-2xl mx-auto text-sm md:text-lg text-muted-foreground font-light leading-relaxed px-4"
             >
