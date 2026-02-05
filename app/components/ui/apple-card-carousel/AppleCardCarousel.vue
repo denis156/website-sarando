@@ -14,12 +14,19 @@ const carouselRef = ref<HTMLDivElement | null>(null);
 const canScrollLeft = ref(false);
 const canScrollRight = ref(true);
 const currentIndex = ref(0);
+const isMobile = ref(false);
 
 onMounted(() => {
   if (carouselRef.value) {
     carouselRef.value.scrollLeft = props.initialScroll;
     checkScrollability();
   }
+
+  // Check mobile
+  isMobile.value = window.innerWidth < 768;
+  window.addEventListener("resize", () => {
+    isMobile.value = window.innerWidth < 768;
+  });
 });
 
 watch(
@@ -64,10 +71,6 @@ function handleCardClose(index: number) {
     currentIndex.value = index;
   }
 }
-
-const isMobile = computed(() => {
-  return window && window.innerWidth < 768;
-});
 
 provide(CarouselKey, {
   onCardClose: handleCardClose,

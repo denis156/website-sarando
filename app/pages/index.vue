@@ -5,6 +5,8 @@ import {
   AppleCard,
 } from "@/components/ui/apple-card-carousel";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { Button } from "@/components/ui/button";
 import { SCROLL_REVEAL_TEXT, CAROUSEL_CARDS, TESTIMONIALS } from "@/constants";
 
 useHead({
@@ -36,11 +38,11 @@ useHead({
 
       <div
         v-motion
-        :initial="{ opacity: 0, scale: 0.9 }"
+        :initial="{ opacity: 0, scale: 0.95 }"
         :enter="{
           opacity: 1,
           scale: 1,
-          transition: { duration: 1000, type: 'spring' },
+          transition: { duration: 600 },
         }"
         class="container max-w-6xl mx-auto text-center z-10"
       >
@@ -52,11 +54,11 @@ useHead({
 
         <div
           v-motion
-          :initial="{ opacity: 0, y: 40 }"
+          :initial="{ opacity: 0, y: 20 }"
           :enter="{
             opacity: 1,
             y: 0,
-            transition: { delay: 400, duration: 800 },
+            transition: { delay: 300, duration: 500 },
           }"
           class="mt-8 md:mt-12 space-y-6 max-w-2xl mx-auto"
         >
@@ -81,7 +83,7 @@ useHead({
       <div
         v-motion
         :initial="{ opacity: 0 }"
-        :enter="{ opacity: 1, transition: { delay: 1000, duration: 1000 } }"
+        :enter="{ opacity: 1, transition: { delay: 600, duration: 500 } }"
         class="absolute bottom-34 md:bottom-38 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/50"
       >
         <span class="text-xs uppercase tracking-widest text-primary/80"
@@ -172,11 +174,11 @@ useHead({
       <div class="container max-w-7xl mx-auto">
         <div
           v-motion
-          :initial="{ opacity: 0, y: 60 }"
+          :initial="{ opacity: 0, y: 30 }"
           :visible-once="{
             opacity: 1,
             y: 0,
-            transition: { duration: 800, ease: 'easeOut' },
+            transition: { duration: 500 },
           }"
           class="flex flex-col md:flex-row justify-between items-start md:items-end mb-4 gap-4 border-b border-border/40 pb-6"
         >
@@ -236,11 +238,11 @@ useHead({
       <div class="container max-w-7xl mx-auto">
         <div
           v-motion
-          :initial="{ opacity: 0, y: 60 }"
+          :initial="{ opacity: 0, y: 30 }"
           :visible-once="{
             opacity: 1,
             y: 0,
-            transition: { duration: 800, ease: 'easeOut' },
+            transition: { duration: 500 },
           }"
           class="mb-12 text-center"
         >
@@ -265,18 +267,17 @@ useHead({
     <!-- ============================================ -->
     <section class="py-20 md:py-32 px-4 md:px-6">
       <div class="container max-w-7xl mx-auto">
-        <div
+        <CardSpotlight
           v-motion
-          :initial="{ opacity: 0, y: 50 }"
-          :visible-once="{ opacity: 1, y: 0, transition: { duration: 800 } }"
-          class="relative w-full overflow-hidden rounded-[40px] bg-white dark:bg-muted/30 border px-6 py-16 md:px-20 md:py-28 text-center"
+          :initial="{ opacity: 0, y: 30 }"
+          :visible-once="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+          class="rounded-[40px]"
+          slot-class="px-6 py-16 md:px-20 md:py-28 w-full"
+          :gradient-size="200"
+          gradient-color="oklch(0.89 0.12 96.5)"
+          :gradient-opacity="0.3"
         >
-          <!-- Background Glow -->
-          <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-50 h-50 md:w-125 md:h-125 bg-secondary/60 dark:bg-secondary/20 blur-[80px] md:blur-[120px] rounded-full pointer-events-none"
-          ></div>
-
-          <div class="relative z-10 space-y-6 md:space-y-8">
+          <div class="text-center space-y-6 md:space-y-8">
             <h3
               class="text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-none"
             >
@@ -294,25 +295,23 @@ useHead({
             <div
               class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 pt-4 md:pt-6"
             >
-              <NuxtLink
-                to="/layanan"
-                class="group relative inline-flex items-center px-6 py-3 text-sm md:px-8 md:py-4 md:text-lg font-bold overflow-hidden rounded-full bg-foreground text-background transition-all hover:scale-105 active:scale-95 shadow-lg hover:shadow-primary/25"
-              >
-                <span>Jelajahi Layanan</span>
-                <ArrowRight
-                  class="w-4 h-4 md:w-5 md:h-5 ml-2 -mr-1 transition-transform group-hover:translate-x-1"
-                />
-              </NuxtLink>
+              <Button as-child size="lg" class="group rounded-full px-6 py-6 md:px-8 text-sm md:text-lg font-bold">
+                <NuxtLink to="/layanan">
+                  Jelajahi Layanan
+                  <ArrowRight
+                    class="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1"
+                  />
+                </NuxtLink>
+              </Button>
               <div class="hidden md:block w-px h-10 bg-border"></div>
-              <NuxtLink
-                to="/kontak"
-                class="text-sm md:text-lg font-medium text-muted-foreground hover:text-primary transition-colors hover:underline underline-offset-4"
-              >
-                Diskusikan Proyek
-              </NuxtLink>
+              <Button as-child variant="link" class="text-sm md:text-lg font-medium text-muted-foreground">
+                <NuxtLink to="/kontak">
+                  Diskusikan Proyek
+                </NuxtLink>
+              </Button>
             </div>
           </div>
-        </div>
+        </CardSpotlight>
       </div>
     </section>
   </main>
