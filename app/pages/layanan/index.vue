@@ -5,14 +5,14 @@ import { Sparkles } from '@/components/ui/sparkles'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { Button } from '@/components/ui/button'
 
-useHead({
-  title: 'Layanan - Solusi Digital Komprehensif',
-  meta: [
-    {
-      name: 'description',
-      content: 'Jelajahi layanan digital premium dari Sarando.',
-    },
-  ],
+useHead({ title: 'Layanan' })
+useSeoMeta({
+  description: 'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
+  ogTitle: 'Layanan - Sarando',
+  ogDescription: 'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
+  ogImage: 'https://sarando.site/og-default.png',
+  ogUrl: 'https://sarando.site/layanan',
+  twitterCard: 'summary_large_image',
 })
 
 // --- Data dari API ---

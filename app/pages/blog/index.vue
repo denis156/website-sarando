@@ -1,5 +1,12 @@
 <script setup lang="ts">
 useHead({ title: 'Blog' })
+useSeoMeta({
+  description: 'Artikel, tips, dan berita terbaru seputar teknologi digital dari Sarando.',
+  ogTitle: 'Blog - Sarando',
+  ogDescription: 'Artikel, tips, dan berita terbaru seputar teknologi digital dari Sarando.',
+  ogImage: 'https://sarando.site/og-default.png',
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>

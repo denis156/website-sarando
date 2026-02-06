@@ -1,5 +1,12 @@
 <script setup lang="ts">
 useHead({ title: 'Portofolio' })
+useSeoMeta({
+  description: 'Lihat portofolio proyek digital yang telah dikerjakan oleh Sarando.',
+  ogTitle: 'Portofolio - Sarando',
+  ogDescription: 'Lihat portofolio proyek digital yang telah dikerjakan oleh Sarando.',
+  ogImage: 'https://sarando.site/og-default.png',
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>

@@ -25,15 +25,14 @@ const carouselCards = computed(() => {
   }))
 })
 
-useHead({
-  title: 'Sarando - Merakit Masa Depan',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Web Development & Digital Solutions dari Konawe, Sulawesi Tenggara.',
-    },
-  ],
+useHead({ title: 'Beranda' })
+useSeoMeta({
+  description: 'Sarando - Sarana Digital Anandonia. Merakit solusi digital berstandar global dengan jiwa kearifan lokal dari Konawe, Sulawesi Tenggara.',
+  ogTitle: 'Beranda - Sarando',
+  ogDescription: 'Sarando - Sarana Digital Anandonia. Merakit solusi digital berstandar global dengan jiwa kearifan lokal dari Konawe, Sulawesi Tenggara.',
+  ogImage: 'https://sarando.site/og-default.png',
+  ogUrl: 'https://sarando.site/',
+  twitterCard: 'summary_large_image',
 })
 </script>
 

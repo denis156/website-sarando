@@ -19,6 +19,9 @@ export default defineNuxtConfig({
         lang: 'id',
       },
       titleTemplate: '%s - Sarando',
+      meta: [
+        { name: 'google-site-verification', content: 'googleb07166856d9b1061' },
+      ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/images/logo/submark-logo.png' },
       ],

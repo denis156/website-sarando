@@ -15,13 +15,19 @@ const slug = route.params.slug as string
 // Fetch service dari API
 const { data: service, pending } = await useService(slug)
 
-// Dynamic Title
 useHead({
   title: computed(() =>
     service.value
-      ? `${service.value.name} - Layanan`
+      ? service.value.name
       : 'Layanan Tidak Ditemukan',
   ),
+})
+useSeoMeta({
+  description: computed(() => service.value?.description ?? 'Detail layanan Sarando'),
+  ogTitle: computed(() => service.value ? `${service.value.name} - Sarando` : 'Layanan - Sarando'),
+  ogDescription: computed(() => service.value?.description ?? 'Detail layanan Sarando'),
+  ogImage: computed(() => service.value?.image_path ?? 'https://sarando.site/og-default.png'),
+  twitterCard: 'summary_large_image',
 })
 
 // Smooth Scroll Handler

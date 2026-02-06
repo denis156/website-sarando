@@ -1,5 +1,12 @@
 <script setup lang="ts">
 useHead({ title: 'Kontak' })
+useSeoMeta({
+  description: 'Hubungi Sarando untuk konsultasi proyek digital Anda. Kami siap membantu dari Konawe, Sulawesi Tenggara.',
+  ogTitle: 'Kontak - Sarando',
+  ogDescription: 'Hubungi Sarando untuk konsultasi proyek digital Anda.',
+  ogImage: 'https://sarando.site/og-default.png',
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
