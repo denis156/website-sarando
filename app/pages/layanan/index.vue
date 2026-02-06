@@ -6,86 +6,86 @@ import {
   BotMessageSquare,
   TrendingUp,
   ArrowRight,
-} from "lucide-vue-next";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { Sparkles } from "@/components/ui/sparkles";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { Button } from "@/components/ui/button";
-import { SERVICES } from "@/constants/services";
+} from 'lucide-vue-next'
+import { BentoGridItem } from '@/components/ui/bento-grid'
+import { Sparkles } from '@/components/ui/sparkles'
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
+import { Button } from '@/components/ui/button'
+import { SERVICES } from '@/constants/services'
 
 useHead({
-  title: "Layanan - Solusi Digital Komprehensif",
+  title: 'Layanan - Solusi Digital Komprehensif',
   meta: [
     {
-      name: "description",
-      content: "Jelajahi layanan digital premium dari Sarando.",
+      name: 'description',
+      content: 'Jelajahi layanan digital premium dari Sarando.',
     },
   ],
-});
+})
 
 // --- State ---
-const selectedCategory = ref("all");
+const selectedCategory = ref('all')
 
 // --- Computed ---
 const categories = computed(() => {
   // Extract and sanitize categories
-  const allCategories = SERVICES.map((s) => ({
-    name: s.category_name ?? "Other",
-    slug: s.category_slug ?? "other",
-  }));
+  const allCategories = SERVICES.map(s => ({
+    name: s.category_name ?? 'Other',
+    slug: s.category_slug ?? 'other',
+  }))
 
   // Create unique map
-  const uniqueMap = new Map();
+  const uniqueMap = new Map()
   allCategories.forEach((cat) => {
     if (!uniqueMap.has(cat.slug)) {
-      uniqueMap.set(cat.slug, cat);
+      uniqueMap.set(cat.slug, cat)
     }
-  });
+  })
 
   // Return All + Unique Categories
-  return [{ name: "All", slug: "all" }, ...uniqueMap.values()];
-});
+  return [{ name: 'All', slug: 'all' }, ...uniqueMap.values()]
+})
 
 const filteredServices = computed(() => {
-  if (selectedCategory.value === "all") {
-    return SERVICES;
+  if (selectedCategory.value === 'all') {
+    return SERVICES
   }
   return SERVICES.filter(
-    (service) => service.category_slug === selectedCategory.value,
-  );
-});
+    service => service.category_slug === selectedCategory.value,
+  )
+})
 
 // --- Methods ---
 const setCategory = (slug: string) => {
-  selectedCategory.value = slug;
-};
+  selectedCategory.value = slug
+}
 
 // Icon Mapping
 const getIcon = (iconName: string | null) => {
   switch (iconName) {
-    case "Globe":
-      return Globe;
-    case "Smartphone":
-      return Smartphone;
-    case "Palette":
-      return Palette;
-    case "BotMessageSquare":
-      return BotMessageSquare;
-    case "TrendingUp":
-      return TrendingUp;
+    case 'Globe':
+      return Globe
+    case 'Smartphone':
+      return Smartphone
+    case 'Palette':
+      return Palette
+    case 'BotMessageSquare':
+      return BotMessageSquare
+    case 'TrendingUp':
+      return TrendingUp
     default:
-      return Globe;
+      return Globe
   }
-};
+}
 
 // Grid Class Logic for Asymmetry
 const getGridClass = (index: number) => {
   // Only apply asymmetry if showing all services, otherwise keep it uniform
-  if (selectedCategory.value !== "all") return "md:col-span-1";
+  if (selectedCategory.value !== 'all') return 'md:col-span-1'
 
-  if (index === 0 || index === 3) return "md:col-span-2";
-  return "md:col-span-1";
-};
+  if (index === 0 || index === 3) return 'md:col-span-2'
+  return 'md:col-span-1'
+}
 </script>
 
 <template>
@@ -164,7 +164,7 @@ const getGridClass = (index: number) => {
                 v-if="item.image_path"
                 class="absolute inset-0 opacity-20 bg-cover bg-center"
                 :style="{ backgroundImage: `url(${item.image_path})` }"
-              ></div>
+              />
             </div>
           </template>
 

@@ -1,35 +1,38 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from "vue";
-import { Motion } from "motion-v";
+import type { HTMLAttributes } from 'vue'
+import { Motion } from 'motion-v'
 
 interface BoxRevealProps {
-  color?: string;
-  duration?: number;
-  class?: HTMLAttributes["class"];
-  delay?: number;
+  color?: string
+  duration?: number
+  class?: HTMLAttributes['class']
+  delay?: number
 }
 
 const props = withDefaults(defineProps<BoxRevealProps>(), {
-  color: "var(--secondary)",
+  color: 'var(--secondary)',
   duration: 0.5,
   delay: 0.25,
-});
+})
 
 // Motion variants
-const initialMainVariants = { opacity: 0, y: 25 };
+const initialMainVariants = { opacity: 0, y: 25 }
 const visibleMainVariants = {
   opacity: 1,
   y: 0,
-};
+}
 
-const initialSlideVariants = { left: "0%" };
+const initialSlideVariants = { left: '0%' }
 const visibleSlideVariants = {
-  left: "100%",
-};
+  left: '100%',
+}
 </script>
 
 <template>
-  <div class="relative" :class="[$props.class]">
+  <div
+    class="relative"
+    :class="[$props.class]"
+  >
     <Motion
       :initial="initialMainVariants"
       :while-in-view="visibleMainVariants"

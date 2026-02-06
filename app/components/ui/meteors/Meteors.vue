@@ -5,7 +5,7 @@ defineProps({
     default: 20,
   },
   class: String,
-});
+})
 </script>
 
 <template>

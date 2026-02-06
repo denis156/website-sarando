@@ -1,25 +1,25 @@
 <script lang="ts" setup>
-import { computed } from "vue";
+import { computed } from 'vue'
 
 interface Props {
-  word: string;
-  progress: number;
-  range: Array<number>;
+  word: string
+  progress: number
+  range: Array<number>
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 
 const computedOpacity = computed(() => {
-  const [start = 0, end = 1] = props.range;
-  const progress = props.progress;
+  const [start = 0, end = 1] = props.range
+  const progress = props.progress
 
   // Calculate opacity based on the progress and range
-  if (progress < start) return 0;
-  if (progress > end) return 1;
+  if (progress < start) return 0
+  if (progress > end) return 1
 
   // Linear interpolation for opacity between 0 and 1
-  return (progress - start) / (end - start);
-});
+  return (progress - start) / (end - start)
+})
 </script>
 
 <template>

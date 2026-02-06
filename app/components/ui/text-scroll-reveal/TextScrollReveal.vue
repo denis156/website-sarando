@@ -1,40 +1,40 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, ref } from "vue";
-import ScrollWord from "./ScrollWord.vue";
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import ScrollWord from './ScrollWord.vue'
 
 interface Props {
-  class?: string;
-  text: string;
+  class?: string
+  text: string
 }
 
 // Props
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 
-const textScrollRevealRef = ref<HTMLElement | null>(null);
+const textScrollRevealRef = ref<HTMLElement | null>(null)
 
-const words = computed(() => props.text.split(" "));
+const words = computed(() => props.text.split(' '))
 
-const scrollYProgress = ref(0);
+const scrollYProgress = ref(0)
 
 function updateScrollYProgress() {
   if (textScrollRevealRef.value) {
-    const boundingRect = textScrollRevealRef.value.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+    const boundingRect = textScrollRevealRef.value.getBoundingClientRect()
+    const windowHeight = window.innerHeight
 
-    scrollYProgress.value = (boundingRect.y / windowHeight) * -1;
+    scrollYProgress.value = (boundingRect.y / windowHeight) * -1
   }
 }
 
 onMounted(() => {
-  window.addEventListener("scroll", updateScrollYProgress);
-  window.addEventListener("resize", updateScrollYProgress);
-  updateScrollYProgress();
-});
+  window.addEventListener('scroll', updateScrollYProgress)
+  window.addEventListener('resize', updateScrollYProgress)
+  updateScrollYProgress()
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", updateScrollYProgress);
-  window.removeEventListener("resize", updateScrollYProgress);
-});
+  window.removeEventListener('scroll', updateScrollYProgress)
+  window.removeEventListener('resize', updateScrollYProgress)
+})
 </script>
 
 <template>

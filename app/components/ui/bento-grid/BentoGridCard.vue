@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from "vue";
+import type { HTMLAttributes } from 'vue'
 
 interface Props {
-  name: string;
-  class?: HTMLAttributes["class"];
-  icon?: string;
-  description: string;
-  href: string;
-  cta: string;
+  name: string
+  class?: HTMLAttributes['class']
+  icon?: string
+  description: string
+  href: string
+  cta: string
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -36,7 +36,9 @@ const props = defineProps<Props>();
       <h3 class="text-xl font-semibold text-neutral-700 dark:text-neutral-300">
         {{ name }}
       </h3>
-      <p class="max-w-lg text-neutral-400">{{ description }}</p>
+      <p class="max-w-lg text-neutral-400">
+        {{ description }}
+      </p>
     </div>
 
     <div

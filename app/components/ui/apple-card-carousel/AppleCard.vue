@@ -1,73 +1,77 @@
 <script setup lang="ts">
-import { onClickOutside } from "@vueuse/core";
-import { AnimatePresence, Motion } from "motion-v";
-import { inject, onMounted, onUnmounted, ref, watch } from "vue";
-import { CarouselKey } from "./AppleCarouselContext";
+import { onClickOutside } from '@vueuse/core'
+import { AnimatePresence, Motion } from 'motion-v'
+import { inject, onMounted, onUnmounted, ref, watch } from 'vue'
+import { CarouselKey } from './AppleCarouselContext'
 
 interface Card {
-  src: string;
-  title: string;
-  category: string;
+  src: string
+  title: string
+  category: string
 }
 
 interface Props {
-  card: Card;
-  index: number;
-  layout?: boolean;
+  card: Card
+  index: number
+  layout?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   layout: false,
-});
+})
 
-const open = ref(false);
-const containerRef = ref<HTMLDivElement | null>(null);
-const carouselContext = inject(CarouselKey);
+const open = ref(false)
+const containerRef = ref<HTMLDivElement | null>(null)
+const carouselContext = inject(CarouselKey)
 
 if (!carouselContext) {
-  throw new Error("Card must be used within a Carousel");
+  throw new Error('Card must be used within a Carousel')
 }
 
-const { onCardClose, currentIndex } = carouselContext;
+const { onCardClose, currentIndex: _currentIndex } = carouselContext
 
 function handleKeyDown(event: KeyboardEvent) {
-  if (event.key === "Escape") {
-    handleClose();
+  if (event.key === 'Escape') {
+    handleClose()
   }
 }
 
 onMounted(() => {
-  window.addEventListener("keydown", handleKeyDown);
-});
+  window.addEventListener('keydown', handleKeyDown)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("keydown", handleKeyDown);
-});
+  window.removeEventListener('keydown', handleKeyDown)
+})
 
 watch(open, (newVal) => {
   if (newVal) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = 'hidden'
   }
-});
+  else {
+    document.body.style.overflow = 'auto'
+  }
+})
 
-onClickOutside(containerRef, () => handleClose());
+onClickOutside(containerRef, () => handleClose())
 
 function handleOpen() {
-  open.value = true;
+  open.value = true
 }
 
 function handleClose() {
-  open.value = false;
-  onCardClose(props.index);
+  open.value = false
+  onCardClose(props.index)
 }
 </script>
 
 <template>
   <Teleport to="body">
     <AnimatePresence>
-      <div v-if="open" class="fixed inset-0 z-50 h-screen overflow-auto">
+      <div
+        v-if="open"
+        class="fixed inset-0 z-50 h-screen overflow-auto"
+      >
         <Motion
           as="div"
           :initial="{ opacity: 0 }"
@@ -146,7 +150,7 @@ function handleClose() {
       :src="card.src"
       :alt="card.title"
       class="absolute inset-0 z-10 object-cover"
-      :fill="true"
+      fill
     />
   </Motion>
 </template>

@@ -2,7 +2,7 @@
 defineProps({
   rotate: Number,
   scale: Number,
-});
+})
 </script>
 
 <template>

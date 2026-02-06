@@ -2,38 +2,34 @@
 import {
   ArrowLeft,
   CheckCircle2,
-  Globe,
-  Smartphone,
-  Palette,
   BotMessageSquare,
-  TrendingUp,
-} from "lucide-vue-next";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { BoxReveal } from "@/components/ui/box-reveal";
-import { Meteors } from "@/components/ui/meteors";
-import { SERVICES } from "@/constants/services";
+} from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { BoxReveal } from '@/components/ui/box-reveal'
+import { Meteors } from '@/components/ui/meteors'
+import { SERVICES } from '@/constants/services'
 
-const route = useRoute();
-const slug = route.params.slug as string;
+const route = useRoute()
+const slug = route.params.slug as string
 
 // Find service by slug
-const service = computed(() => SERVICES.find((s) => s.slug === slug));
+const service = computed(() => SERVICES.find(s => s.slug === slug))
 
 // Dynamic Title
 useHead({
   title: service.value
     ? `${service.value.name} - Layanan`
-    : "Layanan Tidak Ditemukan",
-});
+    : 'Layanan Tidak Ditemukan',
+})
 
 // Smooth Scroll Handler
 const scrollToPricing = () => {
-  const element = document.getElementById("harga");
+  const element = document.getElementById('harga')
   if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
+    element.scrollIntoView({ behavior: 'smooth' })
   }
-};
+}
 </script>
 
 <template>
@@ -43,13 +39,21 @@ const scrollToPricing = () => {
       v-if="!service"
       class="flex flex-col items-center justify-center min-h-[50vh]"
     >
-      <h1 class="text-2xl font-bold">Layanan tidak ditemukan</h1>
-      <Button as-child class="mt-4">
+      <h1 class="text-2xl font-bold">
+        Layanan tidak ditemukan
+      </h1>
+      <Button
+        as-child
+        class="mt-4"
+      >
         <NuxtLink to="/layanan">Kembali ke Layanan</NuxtLink>
       </Button>
     </div>
 
-    <div v-else class="container max-w-7xl mx-auto px-6">
+    <div
+      v-else
+      class="container max-w-7xl mx-auto px-6"
+    >
       <!-- HERO SECTION -->
       <section class="min-h-dvh flex flex-col justify-center pt-24 pb-12">
         <!-- Header / Breadcrumb -->
@@ -93,10 +97,19 @@ const scrollToPricing = () => {
             </BoxReveal>
 
             <div class="flex items-center gap-4 pt-4">
-              <Button size="lg" class="px-8" @click="scrollToPricing">
+              <Button
+                size="lg"
+                class="px-8"
+                @click="scrollToPricing"
+              >
                 Lihat Paket
               </Button>
-              <Button variant="link" size="lg" class="font-medium text-muted-foreground" as-child>
+              <Button
+                variant="link"
+                size="lg"
+                class="font-medium text-muted-foreground"
+                as-child
+              >
                 <NuxtLink to="/kontak">Konsultasi Gratis</NuxtLink>
               </Button>
             </div>
@@ -115,13 +128,16 @@ const scrollToPricing = () => {
             />
             <div
               class="absolute inset-0 bg-linear-to-t from-background/80 to-transparent"
-            ></div>
+            />
           </div>
         </div>
       </section>
 
       <!-- Pricing Plans -->
-      <section id="harga" class="scroll-mt-24 py-24">
+      <section
+        id="harga"
+        class="scroll-mt-24 py-24"
+      >
         <div class="text-center mb-16">
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             Pilihan Paket
@@ -149,8 +165,12 @@ const scrollToPricing = () => {
             </div>
 
             <div class="p-8 flex flex-col h-full relative z-20">
-              <h3 class="text-xl font-bold mb-2">{{ plan.package_name }}</h3>
-              <div class="text-3xl font-black mb-1">{{ plan.price }}</div>
+              <h3 class="text-xl font-bold mb-2">
+                {{ plan.package_name }}
+              </h3>
+              <div class="text-3xl font-black mb-1">
+                {{ plan.price }}
+              </div>
               <p class="text-sm text-muted-foreground mb-8">
                 {{ plan.description }}
               </p>
@@ -187,7 +207,9 @@ const scrollToPricing = () => {
           <BotMessageSquare
             class="w-12 h-12 mx-auto text-muted-foreground mb-4 opacity-50"
           />
-          <h3 class="text-xl font-medium mb-2">Harga Bersifat Custom</h3>
+          <h3 class="text-xl font-medium mb-2">
+            Harga Bersifat Custom
+          </h3>
           <p class="text-muted-foreground mb-6 max-w-md mx-auto">
             Layanan ini membutuhkan estimasi khusus berdasarkan kompleksitas
             proyek. Silakan hubungi kami untuk penawaran.

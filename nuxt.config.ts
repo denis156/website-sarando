@@ -1,7 +1,17 @@
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+
+  modules: [
+    'shadcn-nuxt',
+    '@nuxt/icon',
+    '@nuxtjs/color-mode',
+    '@vueuse/motion/nuxt',
+    '@nuxt/image',
+    'v-gsap-nuxt',
+    '@nuxtjs/google-fonts',
+    '@nuxt/eslint',
+  ],
   devtools: { enabled: true },
   app: {
     head: {
@@ -15,6 +25,15 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/tailwind.css'],
+  colorMode: {
+    classSuffix: '',
+  },
+
+  runtimeConfig: {
+    apiBaseUrl: '',
+    apiKey: '',
+  },
+  compatibilityDate: '2025-07-15',
 
   vite: {
     plugins: [
@@ -25,15 +44,16 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: [
-    'shadcn-nuxt',
-    '@nuxt/icon',
-    '@nuxtjs/color-mode',
-    '@vueuse/motion/nuxt',
-    '@nuxt/image',
-    'v-gsap-nuxt',
-    '@nuxtjs/google-fonts',
-  ],
+  eslint: {
+    config: {
+      stylistic: {
+        semi: false,
+        indent: 2,
+        quotes: 'single',
+      },
+    },
+    checker: true,
+  },
   googleFonts: {
     families: {
       Outfit: [300, 400, 500, 600, 700, 900],
@@ -46,9 +66,6 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
     },
-  },
-  colorMode: {
-    classSuffix: '',
   },
   image: {
     quality: 80,
@@ -66,6 +83,6 @@ export default defineNuxtConfig({
      * @link https://nuxt.com/docs/api/nuxt-config#alias
      * @default "@/components/ui"
      */
-    componentDir: '@/components/ui'
-  }
+    componentDir: '@/components/ui',
+  },
 })

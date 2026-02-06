@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { Sparkles, ArrowDown, ArrowRight } from "lucide-vue-next";
+import { Sparkles, ArrowDown, ArrowRight } from 'lucide-vue-next'
 import {
   AppleCardCarousel,
   AppleCard,
-} from "@/components/ui/apple-card-carousel";
-import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { Button } from "@/components/ui/button";
-import { SCROLL_REVEAL_TEXT, CAROUSEL_CARDS, TESTIMONIALS } from "@/constants";
+} from '@/components/ui/apple-card-carousel'
+import { AnimatedTestimonials } from '@/components/ui/animated-testimonials'
+import { CardSpotlight } from '@/components/ui/card-spotlight'
+import { Button } from '@/components/ui/button'
+import { SCROLL_REVEAL_TEXT, CAROUSEL_CARDS, TESTIMONIALS } from '@/constants'
 
 useHead({
-  title: "Sarando - Merakit Masa Depan",
+  title: 'Sarando - Merakit Masa Depan',
   meta: [
     {
-      name: "description",
+      name: 'description',
       content:
-        "Web Development & Digital Solutions dari Konawe, Sulawesi Tenggara.",
+        'Web Development & Digital Solutions dari Konawe, Sulawesi Tenggara.',
     },
   ],
-});
+})
 </script>
 
 <template>
@@ -34,7 +34,7 @@ useHead({
       <!-- Background Elements -->
       <div
         class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-primary/10 via-background to-background opacity-50"
-      ></div>
+      />
 
       <div
         v-motion
@@ -67,7 +67,7 @@ useHead({
           >
             Merakit
             <span class="text-primary font-medium">Masa Depan</span>
-            <br class="block md:hidden" />
+            <br class="block md:hidden">
             dari
             <span class="text-primary font-medium">Akar Budaya</span>.
           </p>
@@ -86,9 +86,7 @@ useHead({
         :enter="{ opacity: 1, transition: { delay: 600, duration: 500 } }"
         class="absolute bottom-34 md:bottom-38 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground/50"
       >
-        <span class="text-xs uppercase tracking-widest text-primary/80"
-          >Scroll</span
-        >
+        <span class="text-xs uppercase tracking-widest text-primary/80">Scroll</span>
         <ArrowDown class="w-5 h-5 animate-bounce text-primary/80" />
       </div>
     </section>
@@ -109,8 +107,7 @@ useHead({
           <div class="flex flex-col items-center text-center mb-8">
             <span
               class="text-xl md:text-3xl font-medium text-muted-foreground mb-2 tracking-wide"
-              >Kearifan Lokal &</span
-            >
+            >Kearifan Lokal &</span>
             <span
               class="text-4xl md:text-[6rem] font-black tracking-tighter leading-none mt-1 text-foreground"
             >
@@ -129,7 +126,7 @@ useHead({
             >
               <div
                 class="absolute inset-0 bg-primary/20 blur-3xl rounded-full opacity-50"
-              ></div>
+              />
               <NuxtImg
                 src="/images/logo/submark-logo.png"
                 alt="Sarando Logo"
@@ -143,7 +140,7 @@ useHead({
               <h2
                 class="text-2xl md:text-5xl font-bold leading-tight text-foreground"
               >
-                Saatnya <span class="text-primary">Percaya</span> pada <br />
+                Saatnya <span class="text-primary">Percaya</span> pada <br>
                 Karya Putra Daerah
               </h2>
               <p
@@ -185,8 +182,7 @@ useHead({
           <div>
             <span
               class="text-xs font-bold tracking-[0.2em] text-primary uppercase"
-              >Ekspertise</span
-            >
+            >Ekspertise</span>
             <h3 class="text-4xl md:text-7xl font-black mt-4 tracking-tighter">
               Layanan<span class="text-muted-foreground/30">.</span>
             </h3>
@@ -194,7 +190,7 @@ useHead({
           <p
             class="text-muted-foreground/80 max-w-md text-left md:text-right text-lg font-light"
           >
-            Pendekatan holistik untuk kebutuhan digital Anda. <br />Dari konsep
+            Pendekatan holistik untuk kebutuhan digital Anda. <br>Dari konsep
             hingga eksekusi presisi.
           </p>
         </div>
@@ -254,12 +250,11 @@ useHead({
         >
           <span
             class="text-xs font-bold tracking-[0.2em] text-primary uppercase"
-            >Our Team</span
-          >
+          >Our Team</span>
           <h3
             class="text-4xl md:text-6xl font-black leading-tight tracking-tight mt-4"
           >
-            Inovasi Lahir dari <br />
+            Inovasi Lahir dari <br>
             <span class="text-muted-foreground">Akar yang Kuat.</span>
           </h3>
         </div>
@@ -294,14 +289,18 @@ useHead({
               class="max-w-2xl mx-auto text-sm md:text-lg text-muted-foreground font-light leading-relaxed px-4"
             >
               Dari pengembangan sistem hingga strategi branding, kami punya
-              solusi yang Anda butuhkan. <br class="hidden md:block" />
+              solusi yang Anda butuhkan. <br class="hidden md:block">
               Pelajari bagaimana kami dapat membantu bisnis Anda tumbuh.
             </p>
 
             <div
               class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 pt-4 md:pt-6"
             >
-              <Button as-child size="lg" class="group rounded-full px-6 py-6 md:px-8 text-sm md:text-lg font-bold">
+              <Button
+                as-child
+                size="lg"
+                class="group rounded-full px-6 py-6 md:px-8 text-sm md:text-lg font-bold"
+              >
                 <NuxtLink to="/layanan">
                   Jelajahi Layanan
                   <ArrowRight
@@ -309,8 +308,12 @@ useHead({
                   />
                 </NuxtLink>
               </Button>
-              <div class="hidden md:block w-px h-10 bg-border"></div>
-              <Button as-child variant="link" class="text-sm md:text-lg font-medium text-muted-foreground">
+              <div class="hidden md:block w-px h-10 bg-border" />
+              <Button
+                as-child
+                variant="link"
+                class="text-sm md:text-lg font-medium text-muted-foreground"
+              >
                 <NuxtLink to="/kontak">
                   Diskusikan Proyek
                 </NuxtLink>

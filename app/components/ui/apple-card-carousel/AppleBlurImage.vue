@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 
 interface Props {
-  height?: number | string;
-  width?: number | string;
-  src: string;
-  class?: string;
-  alt?: string;
-  fill?: boolean;
+  height?: number | string
+  width?: number | string
+  src: string
+  class?: string
+  alt?: string
+  fill?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   height: undefined,
   width: undefined,
-  class: "",
-  alt: "Background of a beautiful view",
+  class: '',
+  alt: 'Background of a beautiful view',
   fill: false,
-});
+})
 
-const isLoading = ref(true);
+const isLoading = ref(true)
 
 function handleLoad() {
-  isLoading.value = false;
+  isLoading.value = false
 }
 </script>
 

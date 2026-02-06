@@ -1,38 +1,38 @@
 <script setup lang="ts">
-const route = useRoute();
-const isOpen = ref(false);
+const route = useRoute()
+const isOpen = ref(false)
 
 const menuItems = [
-  { label: "Beranda", link: "/" },
-  { label: "Layanan", link: "/layanan" },
-  { label: "Portofolio", link: "/portofolio" },
-  { label: "Blog", link: "/blog" },
-  { label: "Kontak", link: "/kontak" },
-];
+  { label: 'Beranda', link: '/' },
+  { label: 'Layanan', link: '/layanan' },
+  { label: 'Portofolio', link: '/portofolio' },
+  { label: 'Blog', link: '/blog' },
+  { label: 'Kontak', link: '/kontak' },
+]
 
 const socialItems = [
-  { label: "Instagram", link: "https://instagram.com" },
-  { label: "LinkedIn", link: "https://linkedin.com" },
-  { label: "GitHub", link: "https://github.com" },
-];
+  { label: 'Instagram', link: 'https://instagram.com' },
+  { label: 'LinkedIn', link: 'https://linkedin.com' },
+  { label: 'GitHub', link: 'https://github.com' },
+]
 
 const toggleMenu = () => {
-  isOpen.value = !isOpen.value;
-};
+  isOpen.value = !isOpen.value
+}
 
 const isActive = (path: string) => {
-  if (path === "/") return route.path === "/";
-  return route.path.startsWith(path);
-};
+  if (path === '/') return route.path === '/'
+  return route.path.startsWith(path)
+}
 
 const itemVariants = (i: number) => ({
   initial: { y: 20, opacity: 0 },
   enter: {
     y: 0,
     opacity: 1,
-    transition: { delay: i * 80 + 100, duration: 300, ease: "easeOut" },
+    transition: { delay: i * 80 + 100, duration: 300, ease: 'easeOut' },
   },
-});
+})
 </script>
 
 <template>
@@ -56,8 +56,7 @@ const itemVariants = (i: number) => ({
         />
         <span
           class="hidden md:block text-xl font-bold tracking-tight text-foreground"
-          >SARANDO</span
-        >
+        >SARANDO</span>
       </NuxtLink>
 
       <!-- Right side: Mode Toggle + Hamburger -->
@@ -85,7 +84,10 @@ const itemVariants = (i: number) => ({
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-2"
     >
-      <div v-if="isOpen" class="bg-background min-h-dvh">
+      <div
+        v-if="isOpen"
+        class="bg-background min-h-dvh"
+      >
         <div
           class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center min-h-[calc(100dvh-73px)] pb-[5vh] md:pb-[10vh]"
         >

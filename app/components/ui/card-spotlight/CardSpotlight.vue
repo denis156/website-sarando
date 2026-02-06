@@ -1,51 +1,51 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from "vue";
-import { computed, onMounted, ref } from "vue";
+import type { HTMLAttributes } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const props = withDefaults(
   defineProps<{
-    class?: HTMLAttributes["class"];
-    slotClass?: HTMLAttributes["class"];
-    gradientSize?: number;
-    gradientColor?: string;
-    gradientOpacity?: number;
+    class?: HTMLAttributes['class']
+    slotClass?: HTMLAttributes['class']
+    gradientSize?: number
+    gradientColor?: string
+    gradientOpacity?: number
   }>(),
   {
-    class: "",
-    slotClass: "",
+    class: '',
+    slotClass: '',
     gradientSize: 200,
-    gradientColor: "#262626",
+    gradientColor: '#262626',
     gradientOpacity: 0.8,
   },
-);
+)
 
-const mouseX = ref(-props.gradientSize * 10);
-const mouseY = ref(-props.gradientSize * 10);
+const mouseX = ref(-props.gradientSize * 10)
+const mouseY = ref(-props.gradientSize * 10)
 
 function handleMouseMove(e: MouseEvent) {
-  const target = e.currentTarget as HTMLElement;
-  const rect = target.getBoundingClientRect();
-  mouseX.value = e.clientX - rect.left;
-  mouseY.value = e.clientY - rect.top;
+  const target = e.currentTarget as HTMLElement
+  const rect = target.getBoundingClientRect()
+  mouseX.value = e.clientX - rect.left
+  mouseY.value = e.clientY - rect.top
 }
 
 function handleMouseLeave() {
-  mouseX.value = -props.gradientSize * 10;
-  mouseY.value = -props.gradientSize * 10;
+  mouseX.value = -props.gradientSize * 10
+  mouseY.value = -props.gradientSize * 10
 }
 
 onMounted(() => {
-  mouseX.value = -props.gradientSize * 10;
-  mouseY.value = -props.gradientSize * 10;
-});
+  mouseX.value = -props.gradientSize * 10
+  mouseY.value = -props.gradientSize * 10
+})
 
 const backgroundStyle = computed(() => {
   return `radial-gradient(
     circle at ${mouseX.value}px ${mouseY.value}px,
     ${props.gradientColor} 0%,
     rgba(0, 0, 0, 0) 70%
-  )`;
-});
+  )`
+})
 </script>
 
 <template>

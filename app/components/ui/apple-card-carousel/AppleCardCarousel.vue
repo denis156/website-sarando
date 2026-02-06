@@ -1,81 +1,81 @@
 <script setup lang="ts">
-import { computed, onMounted, provide, ref, watch } from "vue";
-import { CarouselKey } from "./AppleCarouselContext";
+import { onMounted, provide, ref, watch } from 'vue'
+import { CarouselKey } from './AppleCarouselContext'
 
 interface Props {
-  initialScroll?: number;
+  initialScroll?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
   initialScroll: 0,
-});
+})
 
-const carouselRef = ref<HTMLDivElement | null>(null);
-const canScrollLeft = ref(false);
-const canScrollRight = ref(true);
-const currentIndex = ref(0);
-const isMobile = ref(false);
+const carouselRef = ref<HTMLDivElement | null>(null)
+const canScrollLeft = ref(false)
+const canScrollRight = ref(true)
+const currentIndex = ref(0)
+const isMobile = ref(false)
 
 onMounted(() => {
   if (carouselRef.value) {
-    carouselRef.value.scrollLeft = props.initialScroll;
-    checkScrollability();
+    carouselRef.value.scrollLeft = props.initialScroll
+    checkScrollability()
   }
 
   // Check mobile
-  isMobile.value = window.innerWidth < 768;
-  window.addEventListener("resize", () => {
-    isMobile.value = window.innerWidth < 768;
-  });
-});
+  isMobile.value = window.innerWidth < 768
+  window.addEventListener('resize', () => {
+    isMobile.value = window.innerWidth < 768
+  })
+})
 
 watch(
   () => props.initialScroll,
   (newVal) => {
     if (carouselRef.value) {
-      carouselRef.value.scrollLeft = newVal;
-      checkScrollability();
+      carouselRef.value.scrollLeft = newVal
+      checkScrollability()
     }
   },
-);
+)
 
 function checkScrollability() {
   if (carouselRef.value) {
-    const { scrollLeft, scrollWidth, clientWidth } = carouselRef.value;
-    canScrollLeft.value = scrollLeft > 0;
-    canScrollRight.value = scrollLeft < scrollWidth - clientWidth;
+    const { scrollLeft, scrollWidth, clientWidth } = carouselRef.value
+    canScrollLeft.value = scrollLeft > 0
+    canScrollRight.value = scrollLeft < scrollWidth - clientWidth
   }
 }
 
 function scrollLeft() {
   if (carouselRef.value) {
-    carouselRef.value.scrollBy({ left: -300, behavior: "smooth" });
+    carouselRef.value.scrollBy({ left: -300, behavior: 'smooth' })
   }
 }
 
 function scrollRight() {
   if (carouselRef.value) {
-    carouselRef.value.scrollBy({ left: 300, behavior: "smooth" });
+    carouselRef.value.scrollBy({ left: 300, behavior: 'smooth' })
   }
 }
 
 function handleCardClose(index: number) {
   if (carouselRef.value) {
-    const cardWidth = isMobile.value ? 230 : 384; // (md:w-96)
-    const gap = isMobile.value ? 4 : 8;
-    const scrollPosition = (cardWidth + gap) * (index + 1);
+    const cardWidth = isMobile.value ? 230 : 384 // (md:w-96)
+    const gap = isMobile.value ? 4 : 8
+    const scrollPosition = (cardWidth + gap) * (index + 1)
     carouselRef.value.scrollTo({
       left: scrollPosition,
-      behavior: "smooth",
-    });
-    currentIndex.value = index;
+      behavior: 'smooth',
+    })
+    currentIndex.value = index
   }
 }
 
 provide(CarouselKey, {
   onCardClose: handleCardClose,
   currentIndex,
-});
+})
 </script>
 
 <template>
@@ -99,14 +99,20 @@ provide(CarouselKey, {
         :disabled="!canScrollLeft"
         @click="scrollLeft"
       >
-        <Icon name="tabler:arrow-narrow-left" class="size-6 text-gray-500" />
+        <Icon
+          name="tabler:arrow-narrow-left"
+          class="size-6 text-gray-500"
+        />
       </button>
       <button
         class="relative z-40 flex size-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
         :disabled="!canScrollRight"
         @click="scrollRight"
       >
-        <Icon name="tabler:arrow-narrow-right" class="size-6 text-gray-500" />
+        <Icon
+          name="tabler:arrow-narrow-right"
+          class="size-6 text-gray-500"
+        />
       </button>
     </div>
   </div>

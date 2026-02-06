@@ -1,71 +1,71 @@
 <script lang="ts" setup>
-import { AnimatePresence, Motion } from "motion-v";
+import { AnimatePresence, Motion } from 'motion-v'
 
 interface Testimonial {
-  quote: string;
-  name: string;
-  designation: string;
-  image: string;
+  quote: string
+  name: string
+  designation: string
+  image: string
 }
 interface Props {
-  testimonials?: Testimonial[];
-  autoplay?: boolean;
-  duration?: number;
+  testimonials?: Testimonial[]
+  autoplay?: boolean
+  duration?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
   testimonials: () => [],
   autoplay: () => false,
   duration: 5000,
-});
+})
 
-const active = ref(0);
-const isMounted = ref(false);
+const active = ref(0)
+const isMounted = ref(false)
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const interval = ref<any>();
+const interval = ref<any>()
 
 const activeTestimonialQuote = computed(() => {
-  return props.testimonials[active.value]?.quote.split(" ") ?? [];
-});
+  return props.testimonials[active.value]?.quote.split(' ') ?? []
+})
 
 // Pre-generate deterministic rotations based on index to avoid hydration mismatch
 const rotations = computed(() => {
   return props.testimonials.map((_, index) => {
     // Use a seeded rotation based on index for consistency
-    const seed = index * 7;
-    return ((seed % 21) - 10);
-  });
-});
+    const seed = index * 7
+    return ((seed % 21) - 10)
+  })
+})
 
 onMounted(() => {
-  isMounted.value = true;
+  isMounted.value = true
   if (props.autoplay) {
-    interval.value = setInterval(handleNext, props.duration);
+    interval.value = setInterval(handleNext, props.duration)
   }
-});
+})
 
 onUnmounted(() => {
   if (!interval.value) {
-    clearInterval(interval.value);
+    clearInterval(interval.value)
   }
-});
+})
 
 function handleNext() {
-  active.value = (active.value + 1) % props.testimonials.length;
+  active.value = (active.value + 1) % props.testimonials.length
 }
 
 function handlePrev() {
-  active.value =
-    (active.value - 1 + props.testimonials.length) % props.testimonials.length;
+  active.value
+    = (active.value - 1 + props.testimonials.length) % props.testimonials.length
 }
 
 function isActive(index: number) {
-  return active.value === index;
+  return active.value === index
 }
 
 function getRotation(index: number) {
-  return rotations.value[index] ?? 0;
+  return rotations.value[index] ?? 0
 }
 </script>
 

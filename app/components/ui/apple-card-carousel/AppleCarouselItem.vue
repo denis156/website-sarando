@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Motion } from "motion-v";
+import { Motion } from 'motion-v'
 
 interface Props {
-  index: number;
+  index: number
 }
 
-defineProps<Props>();
+defineProps<Props>()
 </script>
 
 <template>
