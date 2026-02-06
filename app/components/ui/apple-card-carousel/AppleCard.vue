@@ -85,7 +85,7 @@ function handleClose() {
             :animate="{ opacity: 1, scale: 1 }"
             :exit="{ opacity: 0, scale: 0.95 }"
             :layout-id="layout ? `card-${card.title}` : undefined"
-            class="relative w-full max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900 shadow-2xl"
+            class="relative w-full max-w-2xl rounded-3xl bg-white p-4 font-sans md:p-8 dark:bg-neutral-900 shadow-2xl"
           >
             <button
               aria-label="Tutup"

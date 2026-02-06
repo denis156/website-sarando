@@ -5,38 +5,38 @@ export const CAROUSEL_CARDS = [
   {
     category: "Web & Systems",
     title: "Web Development",
-    src: "https://picsum.photos/id/1/800/600",
+    src: "https://picsum.photos/id/1/1400/1200",
     headline: "Arsitektur Digital Presisi",
     description:
       "Bukan sekadar website, tapi platform tangguh yang dibangun untuk performa dan skalabilitas masa depan.",
-    tags: ["Nuxt", "Vue", "Performance"],
+    tags: ["Starter", "Premium", "Enterprise"],
   },
   {
     category: "Mobile Solutions",
     title: "Mobile Apps",
-    src: "https://picsum.photos/id/119/800/600",
+    src: "https://picsum.photos/id/119/1400/1200",
     headline: "Interaksi Tanpa Batas",
     description:
       "Aplikasi mobile yang menyatu dengan keseharian pengguna. Intuitif, cepat, dan handal di berbagai perangkat.",
-    tags: ["Cross-platform", "Native Feel", "Reactive"],
+    tags: ["Starter", "Premium", "Enterprise"],
   },
   {
     category: "Creative Design",
     title: "UI/UX Design",
-    src: "https://picsum.photos/id/180/800/600",
+    src: "https://picsum.photos/id/180/1400/1200",
     headline: "Estetika Fungsional",
     description:
       "Desain yang berbicara. Kami merancang antarmuka yang tidak hanya indah dipandang, tapi juga nikmat digunakan.",
-    tags: ["User Centric", "Modern Interface", "Experience"],
+    tags: ["Starter", "Premium", "Enterprise"],
   },
   {
     category: "Digital Strategy",
     title: "IT Consulting",
-    src: "https://picsum.photos/id/60/800/600",
+    src: "https://picsum.photos/id/60/1400/1200",
     headline: "Solusi Tepat Guna",
     description:
       "Konsultasi mendalam untuk memetakan kebutuhan teknologi yang paling efisien untuk bisnis Anda.",
-    tags: ["Analysis", "Blueprinting", "Optimization"],
+    tags: ["Starter", "Premium", "Enterprise"],
   },
 ];
 

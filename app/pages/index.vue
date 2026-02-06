@@ -208,6 +208,12 @@ useHead({
               :index="index"
             >
               <div class="space-y-6">
+                <NuxtImg
+                  :src="card.src"
+                  :alt="card.title"
+                  class="w-1/2 mx-auto rounded-2xl object-contain"
+                  loading="lazy"
+                />
                 <h4 class="text-2xl font-bold text-foreground">
                   {{ card.headline }}
                 </h4>
