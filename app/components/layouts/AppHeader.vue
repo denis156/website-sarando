@@ -2,6 +2,8 @@
 const route = useRoute()
 const isOpen = ref(false)
 
+const { data: appearance } = await useAppearance()
+
 const menuItems = [
   { label: 'Beranda', link: '/' },
   { label: 'Layanan', link: '/layanan' },
@@ -10,11 +12,20 @@ const menuItems = [
   { label: 'Kontak', link: '/kontak' },
 ]
 
-const socialItems = [
-  { label: 'Instagram', link: 'https://instagram.com' },
-  { label: 'LinkedIn', link: 'https://linkedin.com' },
-  { label: 'GitHub', link: 'https://github.com' },
-]
+const socialItems = computed(() => {
+  const items: { label: string, link: string, icon: string }[] = []
+  const a = appearance.value
+  if (!a) return items
+  if (a.appearance_instagram) items.push({ label: 'Instagram', link: a.appearance_instagram, icon: 'lucide:instagram' })
+  if (a.appearance_linkedin) items.push({ label: 'LinkedIn', link: a.appearance_linkedin, icon: 'lucide:linkedin' })
+  if (a.appearance_github_link) items.push({ label: 'GitHub', link: a.appearance_github_link, icon: 'lucide:github' })
+  if (a.appearance_tiktok) items.push({ label: 'TikTok', link: a.appearance_tiktok, icon: 'ic:baseline-tiktok' })
+  if (a.appearance_youtube) items.push({ label: 'YouTube', link: a.appearance_youtube, icon: 'lucide:youtube' })
+  if (a.appearance_facebook) items.push({ label: 'Facebook', link: a.appearance_facebook, icon: 'lucide:facebook' })
+  if (a.appearance_twitter) items.push({ label: 'Twitter', link: a.appearance_twitter, icon: 'lucide:twitter' })
+  if (a.appearance_whatsapp) items.push({ label: 'WhatsApp', link: a.appearance_whatsapp, icon: 'lucide:message-circle' })
+  return items
+})
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value
@@ -135,8 +146,9 @@ const itemVariants = (i: number) => ({
               :href="social.link"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm uppercase tracking-widest"
+              class="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm uppercase tracking-widest"
             >
+              <Icon :name="social.icon" class="w-4 h-4 md:w-5 md:h-5" />
               {{ social.label }}
             </a>
           </div>
