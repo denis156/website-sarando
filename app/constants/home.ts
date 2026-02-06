@@ -1,45 +1,6 @@
 export const SCROLL_REVEAL_TEXT
   = 'Di era digital, identitas seringkali hilang. Sarando hadir berbeda. Kami menyatukan Sara (Adat) dan Ndo (Kita). Bukan sekadar menulis kode, kami menerjemahkan nilai-nilai lokal menjadi solusi digital yang bernyawa. Dari Konawe untuk Dunia.'
 
-export const CAROUSEL_CARDS = [
-  {
-    category: 'Web & Systems',
-    title: 'Web Development',
-    src: 'https://picsum.photos/id/1/1400/1200',
-    headline: 'Arsitektur Digital Presisi',
-    description:
-      'Bukan sekadar website, tapi platform tangguh yang dibangun untuk performa dan skalabilitas masa depan.',
-    tags: ['Starter', 'Premium', 'Enterprise'],
-  },
-  {
-    category: 'Mobile Solutions',
-    title: 'Mobile Apps',
-    src: 'https://picsum.photos/id/119/1400/1200',
-    headline: 'Interaksi Tanpa Batas',
-    description:
-      'Aplikasi mobile yang menyatu dengan keseharian pengguna. Intuitif, cepat, dan handal di berbagai perangkat.',
-    tags: ['Starter', 'Premium', 'Enterprise'],
-  },
-  {
-    category: 'Creative Design',
-    title: 'UI/UX Design',
-    src: 'https://picsum.photos/id/180/1400/1200',
-    headline: 'Estetika Fungsional',
-    description:
-      'Desain yang berbicara. Kami merancang antarmuka yang tidak hanya indah dipandang, tapi juga nikmat digunakan.',
-    tags: ['Starter', 'Premium', 'Enterprise'],
-  },
-  {
-    category: 'Digital Strategy',
-    title: 'IT Consulting',
-    src: 'https://picsum.photos/id/60/1400/1200',
-    headline: 'Solusi Tepat Guna',
-    description:
-      'Konsultasi mendalam untuk memetakan kebutuhan teknologi yang paling efisien untuk bisnis Anda.',
-    tags: ['Starter', 'Premium', 'Enterprise'],
-  },
-]
-
 export const TESTIMONIALS = [
   {
     quote:

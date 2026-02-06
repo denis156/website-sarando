@@ -1,5 +1,6 @@
 export default defineEventHandler(async () => {
   const { baseURL, headers } = useApiConfig()
 
-  return await $fetch('/projects', { baseURL, headers })
+  const res = await $fetch<{ data: unknown[] }>('/projects', { baseURL, headers })
+  return res.data
 })

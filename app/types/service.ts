@@ -12,7 +12,6 @@ export interface Service {
   id: number
   category_id: number
   category_name: string | null
-  category_slug: string | null
   name: string
   slug: string
   description: string | null

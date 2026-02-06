@@ -7,7 +7,23 @@ import {
 import { AnimatedTestimonials } from '@/components/ui/animated-testimonials'
 import { CardSpotlight } from '@/components/ui/card-spotlight'
 import { Button } from '@/components/ui/button'
-import { SCROLL_REVEAL_TEXT, CAROUSEL_CARDS, TESTIMONIALS } from '@/constants'
+import { Badge } from '@/components/ui/badge'
+import { SCROLL_REVEAL_TEXT, TESTIMONIALS } from '@/constants'
+
+const { data: services } = await useServices()
+
+// Map API data ke format AppleCard
+const carouselCards = computed(() => {
+  if (!services.value) return []
+  return services.value.map(service => ({
+    src: getImageUrl(service.image_path),
+    title: service.name,
+    category: service.category_name ?? 'Layanan',
+    description: service.description ?? '',
+    slug: service.slug,
+    prices: service.prices ?? [],
+  }))
+})
 
 useHead({
   title: 'Sarando - Merakit Masa Depan',
@@ -196,9 +212,9 @@ useHead({
         </div>
 
         <div class="w-full">
-          <AppleCardCarousel>
+          <AppleCardCarousel v-if="carouselCards.length > 0">
             <AppleCard
-              v-for="(card, index) in CAROUSEL_CARDS"
+              v-for="(card, index) in carouselCards"
               :key="index"
               :card="card"
               :index="index"
@@ -210,22 +226,32 @@ useHead({
                   class="w-1/2 mx-auto rounded-2xl object-contain"
                   loading="lazy"
                 />
-                <h4 class="text-2xl font-bold text-foreground">
-                  {{ card.headline }}
-                </h4>
-                <p class="text-muted-foreground leading-relaxed text-lg">
+                <p class="text-muted-foreground leading-relaxed text-sm md:text-base">
                   {{ card.description }}
                 </p>
-                <div class="flex flex-wrap gap-2 pt-4">
+                <div
+                  v-if="card.prices.length > 0"
+                  class="flex flex-wrap gap-2 pt-4"
+                >
                   <Badge
-                    v-for="tag in card.tags"
-                    :key="tag"
+                    v-for="price in card.prices"
+                    :key="price.id"
                     variant="secondary"
                     class="font-mono text-sm"
                   >
-                    {{ tag }}
+                    {{ price.package_name }}
                   </Badge>
                 </div>
+                <Button
+                  as-child
+                  size="sm"
+                  class="mt-4"
+                >
+                  <NuxtLink :to="`/layanan/${card.slug}`">
+                    Lihat Detail
+                    <ArrowRight class="w-4 h-4" />
+                  </NuxtLink>
+                </Button>
               </div>
             </AppleCard>
           </AppleCardCarousel>

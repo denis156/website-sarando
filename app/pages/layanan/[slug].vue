@@ -8,19 +8,20 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { BoxReveal } from '@/components/ui/box-reveal'
 import { Meteors } from '@/components/ui/meteors'
-import { SERVICES } from '@/constants/services'
 
 const route = useRoute()
 const slug = route.params.slug as string
 
-// Find service by slug
-const service = computed(() => SERVICES.find(s => s.slug === slug))
+// Fetch service dari API
+const { data: service, pending } = await useService(slug)
 
 // Dynamic Title
 useHead({
-  title: service.value
-    ? `${service.value.name} - Layanan`
-    : 'Layanan Tidak Ditemukan',
+  title: computed(() =>
+    service.value
+      ? `${service.value.name} - Layanan`
+      : 'Layanan Tidak Ditemukan',
+  ),
 })
 
 // Smooth Scroll Handler
@@ -34,9 +35,17 @@ const scrollToPricing = () => {
 
 <template>
   <main class="min-h-screen bg-background pb-20">
+    <!-- Loading State -->
+    <div
+      v-if="pending"
+      class="flex items-center justify-center min-h-[50vh]"
+    >
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+    </div>
+
     <!-- 404 Case -->
     <div
-      v-if="!service"
+      v-else-if="!service"
       class="flex flex-col items-center justify-center min-h-[50vh]"
     >
       <h1 class="text-2xl font-bold">
@@ -46,7 +55,9 @@ const scrollToPricing = () => {
         as-child
         class="mt-4"
       >
-        <NuxtLink to="/layanan">Kembali ke Layanan</NuxtLink>
+        <NuxtLink to="/layanan">
+          Kembali ke Layanan
+        </NuxtLink>
       </Button>
     </div>
 
@@ -110,7 +121,9 @@ const scrollToPricing = () => {
                 class="font-medium text-muted-foreground"
                 as-child
               >
-                <NuxtLink to="/kontak">Konsultasi Gratis</NuxtLink>
+                <NuxtLink to="/kontak">
+                  Konsultasi Gratis
+                </NuxtLink>
               </Button>
             </div>
           </div>
@@ -121,13 +134,12 @@ const scrollToPricing = () => {
             class="relative aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl border border-border/50"
           >
             <NuxtImg
-              v-if="service.image_path"
-              :src="service.image_path"
+              :src="getImageUrl(service.image_path)"
               :alt="service.name"
               class="w-full h-full object-cover"
             />
             <div
-              class="absolute inset-0 bg-linear-to-t from-background/80 to-transparent"
+              class="absolute inset-0 bg-linear-to-t from-background/38 to-transparent"
             />
           </div>
         </div>
@@ -169,7 +181,7 @@ const scrollToPricing = () => {
                 {{ plan.package_name }}
               </h3>
               <div class="text-3xl font-black mb-1">
-                {{ plan.price }}
+                {{ formatRupiah(plan.price) }}
               </div>
               <p class="text-sm text-muted-foreground mb-8">
                 {{ plan.description }}
@@ -193,7 +205,9 @@ const scrollToPricing = () => {
                 class="w-full"
                 as-child
               >
-                <NuxtLink to="/kontak">Pilih Paket</NuxtLink>
+                <NuxtLink to="/kontak">
+                  Pilih Paket
+                </NuxtLink>
               </Button>
             </div>
           </div>
@@ -215,7 +229,9 @@ const scrollToPricing = () => {
             proyek. Silakan hubungi kami untuk penawaran.
           </p>
           <Button as-child>
-            <NuxtLink to="/kontak">Hubungi Tim Kami</NuxtLink>
+            <NuxtLink to="/kontak">
+              Hubungi Tim Kami
+            </NuxtLink>
           </Button>
         </div>
       </section>

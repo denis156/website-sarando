@@ -42,6 +42,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDown)
+  document.body.style.overflow = 'auto'
 })
 
 watch(open, (newVal) => {
@@ -111,7 +112,7 @@ function handleClose() {
             <Motion
               as="div"
               :layout-id="layout ? `title-${card.title}` : undefined"
-              class="mt-2 text-3xl font-bold text-neutral-800 md:text-5xl dark:text-neutral-100"
+              class="mt-2 text-2xl font-bold text-neutral-800 md:text-3xl dark:text-neutral-100"
             >
               {{ card.title }}
             </Motion>

@@ -1,17 +1,9 @@
 <script setup lang="ts">
-import {
-  Globe,
-  Smartphone,
-  Palette,
-  BotMessageSquare,
-  TrendingUp,
-  ArrowRight,
-} from 'lucide-vue-next'
+import { ArrowRight } from 'lucide-vue-next'
 import { BentoGridItem } from '@/components/ui/bento-grid'
 import { Sparkles } from '@/components/ui/sparkles'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { Button } from '@/components/ui/button'
-import { SERVICES } from '@/constants/services'
 
 useHead({
   title: 'Layanan - Solusi Digital Komprehensif',
@@ -23,64 +15,46 @@ useHead({
   ],
 })
 
+// --- Data dari API ---
+const { data: services, pending } = await useServices()
+
 // --- State ---
-const selectedCategory = ref('all')
+const selectedCategory = ref<string | number>('all')
 
 // --- Computed ---
 const categories = computed(() => {
-  // Extract and sanitize categories
-  const allCategories = SERVICES.map(s => ({
-    name: s.category_name ?? 'Other',
-    slug: s.category_slug ?? 'other',
-  }))
+  if (!services.value) return [{ name: 'All', slug: 'all' }]
 
-  // Create unique map
-  const uniqueMap = new Map()
-  allCategories.forEach((cat) => {
-    if (!uniqueMap.has(cat.slug)) {
-      uniqueMap.set(cat.slug, cat)
+  const uniqueMap = new Map<number, { name: string, slug: number }>()
+  for (const s of services.value) {
+    if (!uniqueMap.has(s.category_id)) {
+      uniqueMap.set(s.category_id, {
+        name: s.category_name ?? 'Other',
+        slug: s.category_id,
+      })
     }
-  })
+  }
 
-  // Return All + Unique Categories
-  return [{ name: 'All', slug: 'all' }, ...uniqueMap.values()]
+  return [{ name: 'All', slug: 'all' as string | number }, ...uniqueMap.values()]
 })
 
 const filteredServices = computed(() => {
+  if (!services.value) return []
   if (selectedCategory.value === 'all') {
-    return SERVICES
+    return services.value
   }
-  return SERVICES.filter(
-    service => service.category_slug === selectedCategory.value,
+  return services.value.filter(
+    service => service.category_id === selectedCategory.value,
   )
 })
 
 // --- Methods ---
-const setCategory = (slug: string) => {
-  selectedCategory.value = slug
-}
-
-// Icon Mapping
-const getIcon = (iconName: string | null) => {
-  switch (iconName) {
-    case 'Globe':
-      return Globe
-    case 'Smartphone':
-      return Smartphone
-    case 'Palette':
-      return Palette
-    case 'BotMessageSquare':
-      return BotMessageSquare
-    case 'TrendingUp':
-      return TrendingUp
-    default:
-      return Globe
-  }
+const setCategory = (id: string | number) => {
+  selectedCategory.value = id
 }
 
 // Grid Class Logic for Asymmetry
 const getGridClass = (index: number) => {
-  // Only apply asymmetry if showing all services, otherwise keep it uniform
   if (selectedCategory.value !== 'all') return 'md:col-span-1'
 
   if (index === 0 || index === 3) return 'md:col-span-2'
@@ -114,7 +88,7 @@ const getGridClass = (index: number) => {
 
       <div class="relative z-10 text-center px-6">
         <h1
-          class="text-4xl md:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50 mb-6"
+          class="text-4xl md:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-linear-to-b from-foreground to-foreground/50 mb-6"
         >
           DIGITAL <span class="text-primary">SOLUTIONS</span>
         </h1>
@@ -132,71 +106,79 @@ const getGridClass = (index: number) => {
     <!-- FILTER & GRID -->
     <!-- ============================================ -->
     <section class="container max-w-7xl mx-auto px-6 pb-32 relative z-10">
-      <!-- Category Filter -->
-      <div class="flex flex-wrap justify-center gap-2 mb-12">
-        <Button
-          v-for="cat in categories"
-          :key="cat.slug"
-          :variant="selectedCategory === cat.slug ? 'default' : 'outline'"
-          size="sm"
-          class="rounded-full px-6 transition-all duration-300"
-          @click="setCategory(cat.slug)"
-        >
-          {{ cat.name }}
-        </Button>
-      </div>
-
-      <!-- Bento Grid -->
+      <!-- Loading State -->
       <div
-        class="w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[20rem]"
+        v-if="pending"
+        class="flex justify-center py-20"
       >
-        <BentoGridItem
-          v-for="(item, i) in filteredServices"
-          :key="item.id"
-          :class="getGridClass(i)"
-        >
-          <template #header>
-            <div
-              class="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-800 border border-transparent dark:border-white/[0.2] overflow-hidden relative"
-            >
-              <!-- Optional: Background Image Overlay -->
-              <div
-                v-if="item.image_path"
-                class="absolute inset-0 opacity-20 bg-cover bg-center"
-                :style="{ backgroundImage: `url(${item.image_path})` }"
-              />
-            </div>
-          </template>
-
-          <template #icon>
-            <component
-              :is="getIcon(item.icon)"
-              class="h-6 w-6 text-primary mb-2"
-            />
-          </template>
-
-          <template #title>
-            <span class="text-xl font-bold">{{ item.name }}</span>
-          </template>
-
-          <template #description>
-            <div class="flex flex-col gap-4 h-full justify-between">
-              <span
-                class="text-neutral-500 dark:text-neutral-300 text-sm leading-relaxed line-clamp-2"
-              >
-                {{ item.description }}
-              </span>
-              <NuxtLink
-                :to="`/layanan/${item.slug}`"
-                class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors mt-auto"
-              >
-                Lihat Detail
-                <ArrowRight class="w-4 h-4" />
-              </NuxtLink>
-            </div>
-          </template>
-        </BentoGridItem>
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
       </div>
+
+      <template v-else-if="services && services.length > 0">
+        <!-- Category Filter -->
+        <div class="flex flex-wrap justify-center gap-2 mb-12">
+          <Button
+            v-for="cat in categories"
+            :key="cat.slug"
+            :variant="selectedCategory === cat.slug ? 'default' : 'outline'"
+            size="sm"
+            class="rounded-full px-6 transition-all duration-300"
+            @click="setCategory(cat.slug)"
+          >
+            {{ cat.name }}
+          </Button>
+        </div>
+
+        <!-- Bento Grid -->
+        <div
+          class="w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[20rem]"
+        >
+          <BentoGridItem
+            v-for="(item, i) in filteredServices"
+            :key="item.id"
+            :class="getGridClass(i)"
+          >
+            <template #header>
+              <div
+                class="flex flex-1 w-full h-full min-h-24 rounded-xl bg-linear-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-800 border border-transparent dark:border-white/20 overflow-hidden relative"
+              >
+                <div
+                  class="absolute inset-0 opacity-20 bg-cover bg-center"
+                  :style="{ backgroundImage: `url(${getImageUrl(item.image_path, 800, 600)})` }"
+                />
+              </div>
+            </template>
+
+            <template #icon>
+              <Icon
+                :name="item.icon?.toLowerCase() || 'lucide:globe'"
+                class="h-6 w-6 text-primary mb-2"
+              />
+            </template>
+
+            <template #title>
+              <span class="text-xl font-bold">{{ item.name }}</span>
+            </template>
+
+            <template #description>
+              <div class="flex flex-col gap-4 h-full justify-between">
+                <span
+                  class="text-neutral-500 dark:text-neutral-300 text-sm leading-relaxed line-clamp-2"
+                >
+                  {{ item.description }}
+                </span>
+                <NuxtLink
+                  :to="`/layanan/${item.slug}`"
+                  class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors mt-auto"
+                >
+                  Lihat Detail
+                  <ArrowRight class="w-4 h-4" />
+                </NuxtLink>
+              </div>
+            </template>
+          </BentoGridItem>
+        </div>
+      </template>
     </section>
   </main>
 </template>
