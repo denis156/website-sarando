@@ -62,7 +62,7 @@ useSeoMeta({
         class="container max-w-6xl mx-auto text-center z-10"
       >
         <h1
-          class="text-[clamp(4rem,15vw,12rem)] font-black tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-linear-to-b from-foreground to-foreground/40 select-none"
+          class="text-[clamp(3rem,12vw,12rem)] font-black tracking-tighter leading-[0.85] text-transparent bg-clip-text bg-linear-to-b from-foreground to-foreground/40 select-none"
         >
           SARA<span class="text-primary">NDO</span>
         </h1>
