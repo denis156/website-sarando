@@ -30,7 +30,7 @@ useSeoMeta({
   description: 'Sarando - Sarana Digital Anandonia. Merakit solusi digital berstandar global dengan jiwa kearifan lokal dari Konawe, Sulawesi Tenggara.',
   ogTitle: 'Beranda - Sarando',
   ogDescription: 'Sarando - Sarana Digital Anandonia. Merakit solusi digital berstandar global dengan jiwa kearifan lokal dari Konawe, Sulawesi Tenggara.',
-  ogImage: 'https://sarando.site/og-default.png',
+  ogImage: 'https://sarando.site/images/logo/og-default.png',
   ogUrl: 'https://sarando.site/',
   twitterCard: 'summary_large_image',
 })
@@ -182,7 +182,7 @@ useSeoMeta({
     <!-- ============================================ -->
     <!-- SERVICES: THE "WHAT" -->
     <!-- ============================================ -->
-    <section class="py-32 px-6">
+    <section class="py-16 md:py-32 px-6">
       <div class="container max-w-7xl mx-auto">
         <div
           v-motion
@@ -198,7 +198,7 @@ useSeoMeta({
             <span
               class="text-xs font-bold tracking-[0.2em] text-primary uppercase"
             >Ekspertise</span>
-            <h3 class="text-4xl md:text-7xl font-black mt-4 tracking-tighter">
+            <h3 class="text-3xl md:text-7xl font-black mt-4 tracking-tighter">
               Layanan<span class="text-muted-foreground/30">.</span>
             </h3>
           </div>
@@ -261,7 +261,7 @@ useSeoMeta({
     <!-- ============================================ -->
     <!-- TEAM: THE "WHO" -->
     <!-- ============================================ -->
-    <section class="py-32 px-6">
+    <section class="py-16 md:py-32 px-6">
       <div class="container max-w-7xl mx-auto">
         <div
           v-motion
@@ -277,7 +277,7 @@ useSeoMeta({
             class="text-xs font-bold tracking-[0.2em] text-primary uppercase"
           >Our Team</span>
           <h3
-            class="text-4xl md:text-6xl font-black leading-tight tracking-tight mt-4"
+            class="text-3xl md:text-6xl font-black leading-tight tracking-tight mt-4"
           >
             Inovasi Lahir dari <br>
             <span class="text-muted-foreground">Akar yang Kuat.</span>

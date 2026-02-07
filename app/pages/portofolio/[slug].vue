@@ -4,14 +4,14 @@ useHead({ title: String(route.params.slug).replace(/-/g, ' ') })
 </script>
 
 <template>
-  <div class="flex-1 flex flex-col">
+  <div class="flex-1 flex flex-col px-6">
     <!-- Section 1 -->
-    <section class="min-h-dvh flex flex-col justify-center">
+    <section class="min-h-dvh flex flex-col justify-center pt-20">
       <NuxtLink
         to="/portofolio"
         class="text-sm text-muted-foreground hover:text-foreground"
       >&larr; Kembali ke Portofolio</NuxtLink>
-      <h1 class="mt-6 text-4xl font-bold tracking-tight capitalize">
+      <h1 class="mt-6 text-3xl md:text-4xl font-bold tracking-tight capitalize">
         {{ route.params.slug }}
       </h1>
       <p class="mt-4 text-lg text-muted-foreground">

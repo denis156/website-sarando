@@ -10,7 +10,7 @@ useSeoMeta({
   description: 'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
   ogTitle: 'Layanan - Sarando',
   ogDescription: 'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
-  ogImage: 'https://sarando.site/og-default.png',
+  ogImage: 'https://sarando.site/images/logo/og-default.png',
   ogUrl: 'https://sarando.site/layanan',
   twitterCard: 'summary_large_image',
 })
@@ -88,14 +88,14 @@ const getGridClass = (index: number) => {
 
       <div class="relative z-10 text-center px-6">
         <h1
-          class="text-4xl md:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-linear-to-b from-foreground to-foreground/50 mb-6"
+          class="text-3xl md:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-linear-to-b from-foreground to-foreground/50 mb-6"
         >
           DIGITAL <span class="text-primary">SOLUTIONS</span>
         </h1>
         <div class="max-w-2xl mx-auto">
           <TextGenerateEffect
             words="Mengubah ide abstrak menjadi realitas digital yang presisi. Kami menyediakan ekosistem teknologi lengkap untuk pertumbuhan bisnis Anda."
-            class="text-lg md:text-xl text-muted-foreground font-light leading-relaxed"
+            class="text-base md:text-xl text-muted-foreground font-light leading-relaxed"
             :duration="0.3"
           />
         </div>

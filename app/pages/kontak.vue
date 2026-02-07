@@ -4,16 +4,16 @@ useSeoMeta({
   description: 'Hubungi Sarando untuk konsultasi proyek digital Anda. Kami siap membantu dari Konawe, Sulawesi Tenggara.',
   ogTitle: 'Kontak - Sarando',
   ogDescription: 'Hubungi Sarando untuk konsultasi proyek digital Anda.',
-  ogImage: 'https://sarando.site/og-default.png',
+  ogImage: 'https://sarando.site/images/logo/og-default.png',
   twitterCard: 'summary_large_image',
 })
 </script>
 
 <template>
-  <div class="flex-1 flex flex-col">
+  <div class="flex-1 flex flex-col px-6">
     <!-- Section 1 -->
-    <section class="min-h-dvh flex flex-col justify-center">
-      <h1 class="text-4xl font-bold tracking-tight">
+    <section class="min-h-dvh flex flex-col justify-center pt-20">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">
         Kontak
       </h1>
       <p class="mt-4 text-lg text-muted-foreground">

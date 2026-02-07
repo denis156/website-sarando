@@ -1,7 +1,6 @@
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
-
   modules: [
     'shadcn-nuxt',
     '@nuxt/icon',
@@ -11,8 +10,11 @@ export default defineNuxtConfig({
     'v-gsap-nuxt',
     '@nuxtjs/google-fonts',
     '@nuxt/eslint',
+    '@nuxtjs/seo',
   ],
+
   devtools: { enabled: true },
+
   app: {
     head: {
       htmlAttrs: {
@@ -21,13 +23,24 @@ export default defineNuxtConfig({
       titleTemplate: '%s - Sarando',
       meta: [
         { name: 'google-site-verification', content: 'googleb07166856d9b1061' },
+        { name: 'author', content: 'Sarando - Sarana Digital Anandonia' },
+        { name: 'theme-color', content: '#31694E' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/images/logo/submark-logo.png' },
       ],
     },
   },
+
   css: ['~/assets/css/tailwind.css'],
+
+  site: {
+    url: 'https://sarando.site',
+    name: 'Sarando',
+    description: 'Sarando - Sarana Digital Anandonia. Merakit solusi digital berstandar global dengan jiwa kearifan lokal dari Konawe, Sulawesi Tenggara.',
+    defaultLocale: 'id',
+  },
+
   colorMode: {
     classSuffix: '',
   },
@@ -61,6 +74,7 @@ export default defineNuxtConfig({
     },
     checker: true,
   },
+
   googleFonts: {
     families: {
       Outfit: [300, 400, 500, 600, 700, 900],
@@ -69,27 +83,43 @@ export default defineNuxtConfig({
     preload: true,
     prefetch: true,
   },
+
   icon: {
     clientBundle: {
       scan: true,
     },
   },
+
   image: {
     quality: 80,
     format: ['webp', 'avif'],
   },
+
+  ogImage: {
+    defaults: {
+      url: '/images/logo/og-default.png',
+    },
+  },
+
+  schemaOrg: {
+    identity: {
+      type: 'Organization',
+      name: 'Sarando',
+      alternateName: ['Sarana Digital Anandonia', 'PT Sarana Digital Anandonia', 'SARANDO'],
+      url: 'https://sarando.site',
+      logo: 'https://sarando.site/images/logo/og-default.png',
+      description: 'Merakit solusi digital berstandar global dengan jiwa kearifan lokal dari Konawe, Sulawesi Tenggara.',
+      foundingDate: '2026',
+      address: {
+        addressLocality: 'Konawe',
+        addressRegion: 'Sulawesi Tenggara',
+        addressCountry: 'ID',
+      },
+    },
+  },
+
   shadcn: {
-    /**
-     * Prefix for all the imported component.
-     * @default "Ui"
-     */
     prefix: '',
-    /**
-     * Directory that the component lives in.
-     * Will respect the Nuxt aliases.
-     * @link https://nuxt.com/docs/api/nuxt-config#alias
-     * @default "@/components/ui"
-     */
     componentDir: '@/components/ui',
   },
 })

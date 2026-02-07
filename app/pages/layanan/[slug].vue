@@ -26,7 +26,7 @@ useSeoMeta({
   description: computed(() => service.value?.description ?? 'Detail layanan Sarando'),
   ogTitle: computed(() => service.value ? `${service.value.name} - Sarando` : 'Layanan - Sarando'),
   ogDescription: computed(() => service.value?.description ?? 'Detail layanan Sarando'),
-  ogImage: computed(() => service.value?.image_path ?? 'https://sarando.site/og-default.png'),
+  ogImage: computed(() => service.value?.image_path ?? 'https://sarando.site/images/logo/og-default.png'),
   twitterCard: 'summary_large_image',
 })
 
@@ -72,7 +72,7 @@ const scrollToPricing = () => {
       class="container max-w-7xl mx-auto px-6"
     >
       <!-- HERO SECTION -->
-      <section class="min-h-dvh flex flex-col justify-center pt-24 pb-12">
+      <section class="min-h-dvh flex flex-col justify-center pt-20 md:pt-24 pb-12">
         <!-- Header / Breadcrumb -->
         <NuxtLink
           to="/layanan"
@@ -85,7 +85,7 @@ const scrollToPricing = () => {
         </NuxtLink>
 
         <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center"
         >
           <div class="space-y-6">
             <BoxReveal :duration="0.7">
@@ -137,7 +137,7 @@ const scrollToPricing = () => {
           <!-- Hero Image / Visual -->
           <div
             v-motion-fade-visible-once
-            class="relative aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl border border-border/50"
+            class="relative aspect-4/3 lg:aspect-square rounded-3xl overflow-hidden shadow-2xl border border-border/50"
           >
             <NuxtImg
               :src="getImageUrl(service.image_path)"
@@ -182,11 +182,11 @@ const scrollToPricing = () => {
               </ClientOnly>
             </div>
 
-            <div class="p-8 flex flex-col h-full relative z-20">
+            <div class="p-5 md:p-8 flex flex-col h-full relative z-20">
               <h3 class="text-xl font-bold mb-2">
                 {{ plan.package_name }}
               </h3>
-              <div class="text-3xl font-black mb-1">
+              <div class="text-2xl md:text-3xl font-black mb-1">
                 {{ formatRupiah(plan.price) }}
               </div>
               <p class="text-sm text-muted-foreground mb-8">
