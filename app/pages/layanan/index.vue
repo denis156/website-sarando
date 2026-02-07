@@ -7,9 +7,11 @@ import { Button } from '@/components/ui/button'
 
 useHead({ title: 'Layanan' })
 useSeoMeta({
-  description: 'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
+  description:
+    'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
   ogTitle: 'Layanan - Sarando',
-  ogDescription: 'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
+  ogDescription:
+    'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
   ogImage: 'https://sarando.site/images/logo/og-default.png',
   ogUrl: 'https://sarando.site/layanan',
   twitterCard: 'summary_large_image',
@@ -35,7 +37,10 @@ const categories = computed(() => {
     }
   }
 
-  return [{ name: 'All', slug: 'all' as string | number }, ...uniqueMap.values()]
+  return [
+    { name: 'All', slug: 'all' as string | number },
+    ...uniqueMap.values(),
+  ]
 })
 
 const filteredServices = computed(() => {
@@ -111,7 +116,9 @@ const getGridClass = (index: number) => {
         v-if="pending"
         class="flex justify-center py-20"
       >
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+        <div
+          class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"
+        />
       </div>
 
       <template v-else-if="services && services.length > 0">
@@ -131,7 +138,7 @@ const getGridClass = (index: number) => {
 
         <!-- Bento Grid -->
         <div
-          class="w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[20rem]"
+          class="w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:auto-rows-[25rem]"
         >
           <BentoGridItem
             v-for="(item, i) in filteredServices"
@@ -140,11 +147,16 @@ const getGridClass = (index: number) => {
           >
             <template #header>
               <div
-                class="flex flex-1 w-full h-full min-h-24 rounded-xl bg-linear-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-800 border border-transparent dark:border-white/20 overflow-hidden relative"
+                class="flex flex-1 w-full h-full min-h-40 rounded-xl bg-linear-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-800 border border-transparent dark:border-white/20 overflow-hidden relative group"
               >
                 <div
-                  class="absolute inset-0 opacity-20 bg-cover bg-center"
-                  :style="{ backgroundImage: `url(${getImageUrl(item.image_path, 800, 600)})` }"
+                  class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                  :style="{
+                    backgroundImage: `url(${getImageUrl(item.image_path, 800, 600)})`,
+                  }"
+                />
+                <div
+                  class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300"
                 />
               </div>
             </template>
@@ -167,13 +179,18 @@ const getGridClass = (index: number) => {
                 >
                   {{ item.description }}
                 </span>
-                <NuxtLink
-                  :to="`/layanan/${item.slug}`"
-                  class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors mt-auto"
-                >
-                  Lihat Detail
-                  <ArrowRight class="w-4 h-4" />
-                </NuxtLink>
+                <div class="flex items-center justify-between mt-auto">
+                  <span class="text-xs font-medium text-muted-foreground">{{
+                    item.category_name ?? "Layanan"
+                  }}</span>
+                  <NuxtLink
+                    :to="`/layanan/${item.slug}`"
+                    class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                  >
+                    Detail
+                    <ArrowRight class="w-4 h-4" />
+                  </NuxtLink>
+                </div>
               </div>
             </template>
           </BentoGridItem>

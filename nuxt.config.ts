@@ -11,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxt/eslint',
     '@nuxtjs/seo',
+    '@nuxt/content',
   ],
 
   devtools: { enabled: true },

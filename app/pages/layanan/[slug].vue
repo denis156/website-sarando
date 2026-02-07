@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import {
-  ArrowLeft,
-  CheckCircle2,
-  BotMessageSquare,
-} from 'lucide-vue-next'
+import { ArrowLeft, CheckCircle2, BotMessageSquare } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { BoxReveal } from '@/components/ui/box-reveal'
@@ -17,16 +13,24 @@ const { data: service, pending } = await useService(slug)
 
 useHead({
   title: computed(() =>
-    service.value
-      ? service.value.name
-      : 'Layanan Tidak Ditemukan',
+    service.value ? service.value.name : 'Layanan Tidak Ditemukan',
   ),
 })
 useSeoMeta({
-  description: computed(() => service.value?.description ?? 'Detail layanan Sarando'),
-  ogTitle: computed(() => service.value ? `${service.value.name} - Sarando` : 'Layanan - Sarando'),
-  ogDescription: computed(() => service.value?.description ?? 'Detail layanan Sarando'),
-  ogImage: computed(() => service.value?.image_path ?? 'https://sarando.site/images/logo/og-default.png'),
+  description: computed(
+    () => service.value?.description ?? 'Detail layanan Sarando',
+  ),
+  ogTitle: computed(() =>
+    service.value ? `${service.value.name} - Sarando` : 'Layanan - Sarando',
+  ),
+  ogDescription: computed(
+    () => service.value?.description ?? 'Detail layanan Sarando',
+  ),
+  ogImage: computed(
+    () =>
+      service.value?.image_path
+      ?? 'https://sarando.site/images/logo/og-default.png',
+  ),
   twitterCard: 'summary_large_image',
 })
 
@@ -46,7 +50,9 @@ const scrollToPricing = () => {
       v-if="pending"
       class="flex items-center justify-center min-h-[50vh]"
     >
-      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+      <div
+        class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"
+      />
     </div>
 
     <!-- 404 Case -->
@@ -61,9 +67,7 @@ const scrollToPricing = () => {
         as-child
         class="mt-4"
       >
-        <NuxtLink to="/layanan">
-          Kembali ke Layanan
-        </NuxtLink>
+        <NuxtLink to="/layanan"> Kembali ke Layanan </NuxtLink>
       </Button>
     </div>
 
@@ -72,11 +76,13 @@ const scrollToPricing = () => {
       class="container max-w-7xl mx-auto px-6"
     >
       <!-- HERO SECTION -->
-      <section class="min-h-dvh flex flex-col justify-center pt-20 md:pt-24 pb-12">
+      <section
+        class="min-h-dvh flex flex-col justify-center pt-24 lg:pt-32 pb-12 lg:pb-20"
+      >
         <!-- Header / Breadcrumb -->
         <NuxtLink
           to="/layanan"
-          class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8 group w-fit"
+          class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6 lg:mb-8 group w-fit"
         >
           <ArrowLeft
             class="w-4 h-4 transition-transform group-hover:-translate-x-1"
@@ -127,9 +133,7 @@ const scrollToPricing = () => {
                 class="font-medium text-muted-foreground"
                 as-child
               >
-                <NuxtLink to="/kontak">
-                  Konsultasi Gratis
-                </NuxtLink>
+                <NuxtLink to="/kontak"> Konsultasi Gratis </NuxtLink>
               </Button>
             </div>
           </div>
@@ -211,9 +215,7 @@ const scrollToPricing = () => {
                 class="w-full"
                 as-child
               >
-                <NuxtLink to="/kontak">
-                  Pilih Paket
-                </NuxtLink>
+                <NuxtLink to="/kontak"> Pilih Paket </NuxtLink>
               </Button>
             </div>
           </div>
@@ -235,9 +237,7 @@ const scrollToPricing = () => {
             proyek. Silakan hubungi kami untuk penawaran.
           </p>
           <Button as-child>
-            <NuxtLink to="/kontak">
-              Hubungi Tim Kami
-            </NuxtLink>
+            <NuxtLink to="/kontak"> Hubungi Tim Kami </NuxtLink>
           </Button>
         </div>
       </section>
