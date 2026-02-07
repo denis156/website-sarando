@@ -34,6 +34,24 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+defineOgImage({
+  url: computed(() => service.value?.image_path || '/images/logo/og-default.png'),
+})
+
+useSchemaOrg([
+  defineWebPage({
+    name: computed(() => service.value ? `${service.value.name} - Sarando` : 'Layanan - Sarando'),
+    description: computed(() => service.value?.description ?? 'Detail layanan Sarando'),
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Beranda', item: '/' },
+      { name: 'Layanan', item: '/layanan' },
+      { name: computed(() => service.value?.name ?? 'Detail') },
+    ],
+  }),
+])
+
 // Smooth Scroll Handler
 const scrollToPricing = () => {
   const element = document.getElementById('harga')

@@ -34,6 +34,16 @@ useSeoMeta({
   ogUrl: 'https://sarando.site/',
   twitterCard: 'summary_large_image',
 })
+
+defineOgImage({ url: '/images/logo/og-default.png' })
+
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'WebPage',
+    'name': 'Beranda - Sarando',
+    'description': 'Sarando - Sarana Digital Anandonia. Merakit solusi digital berstandar global dengan jiwa kearifan lokal dari Konawe, Sulawesi Tenggara.',
+  }),
+])
 </script>
 
 <template>

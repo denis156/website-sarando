@@ -18,6 +18,22 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+defineOgImage({ url: '/images/logo/og-default.png' })
+
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'CollectionPage',
+    'name': 'Portofolio - Sarando',
+    'description': 'Lihat hasil karya terbaik kami. Studi kasus proyek pengembangan software, aplikasi mobile, dan solusi AI.',
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Beranda', item: '/' },
+      { name: 'Portofolio' },
+    ],
+  }),
+])
+
 // --- Data ---
 const { data: projects, pending } = await useProjects()
 

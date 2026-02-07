@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     name: 'Sarando',
     description: 'Sarando - Sarana Digital Anandonia. Merakit solusi digital berstandar global dengan jiwa kearifan lokal dari Konawe, Sulawesi Tenggara.',
     defaultLocale: 'id',
+    indexable: true,
   },
 
   colorMode: {
@@ -50,6 +51,7 @@ export default defineNuxtConfig({
     apiBaseUrl: '',
     apiKey: '',
   },
+
   compatibilityDate: '2025-07-15',
 
   nitro: {
@@ -122,5 +124,9 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
     componentDir: '@/components/ui',
+  },
+
+  sitemap: {
+    sources: ['/api/__sitemap__/urls'],
   },
 })

@@ -44,6 +44,24 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+defineOgImage({
+  url: computed(() => project.value?.images?.find(i => i.is_thumbnail)?.image_path || '/images/logo/og-default.png'),
+})
+
+useSchemaOrg([
+  defineWebPage({
+    name: computed(() => project.value ? `${project.value.title} - Sarando` : 'Proyek - Sarando'),
+    description: computed(() => project.value?.description ?? 'Detail proyek Sarando'),
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Beranda', item: '/' },
+      { name: 'Portofolio', item: '/portofolio' },
+      { name: computed(() => project.value?.title ?? 'Detail') },
+    ],
+  }),
+])
+
 // Utility
 const formatDate = (dateString: string | null) => {
   if (!dateString) return '-'

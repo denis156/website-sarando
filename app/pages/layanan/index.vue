@@ -17,6 +17,22 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+defineOgImage({ url: '/images/logo/og-default.png' })
+
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'CollectionPage',
+    'name': 'Layanan Digital - Sarando',
+    'description': 'Jelajahi layanan digital premium dari Sarando. Solusi komprehensif untuk kebutuhan digital bisnis Anda.',
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Beranda', item: '/' },
+      { name: 'Layanan' },
+    ],
+  }),
+])
+
 // --- Data dari API ---
 const { data: services, pending } = await useServices()
 
@@ -25,7 +41,7 @@ const selectedCategory = ref<string | number>('all')
 
 // --- Computed ---
 const categories = computed(() => {
-  if (!services.value) return [{ name: 'All', slug: 'all' }]
+  if (!services.value) return [{ name: 'Semua', slug: 'all' }]
 
   const uniqueMap = new Map<number, { name: string, slug: number }>()
   for (const s of services.value) {
@@ -38,7 +54,7 @@ const categories = computed(() => {
   }
 
   return [
-    { name: 'All', slug: 'all' as string | number },
+    { name: 'Semua', slug: 'all' as string | number },
     ...uniqueMap.values(),
   ]
 })
