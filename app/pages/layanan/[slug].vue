@@ -35,7 +35,7 @@ useSeoMeta({
 })
 
 defineOgImage({
-  url: computed(() => service.value?.image_path || '/images/logo/og-default.png'),
+  url: service.value?.image_path || '/images/logo/og-default.png',
 })
 
 useSchemaOrg([
