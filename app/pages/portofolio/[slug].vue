@@ -177,11 +177,11 @@ const carouselCards = computed(() => {
               v-motion-fade-visible-once
               class="relative w-full aspect-4/3 lg:aspect-square rounded-3xl overflow-hidden shadow-2xl border border-border/50 group"
             >
-              <div
-                class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                :style="{
-                  backgroundImage: `url(${project.images?.find((i) => i.is_thumbnail)?.image_path || project.service?.image_path})`,
-                }"
+              <NuxtImg
+                :src="project.images?.find((i) => i.is_thumbnail)?.image_path || project.service?.image_path"
+                :alt="project.title"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
               />
               <div
                 class="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent opacity-60"

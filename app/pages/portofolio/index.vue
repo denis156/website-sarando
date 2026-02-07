@@ -174,9 +174,11 @@ const getProjectImage = (project: Project) => {
                 class="flex flex-1 w-full h-full min-h-40 rounded-xl bg-linear-to-br from-neutral-100 to-neutral-200 dark:from-neutral-900 dark:to-neutral-800 border border-transparent dark:border-white/20 overflow-hidden relative group"
               >
                 <!-- Image with Zoom Effect -->
-                <div
-                  class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                  :style="{ backgroundImage: `url(${getProjectImage(item)})` }"
+                <NuxtImg
+                  :src="getProjectImage(item)"
+                  :alt="item.title"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div
                   class="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300"
