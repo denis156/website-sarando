@@ -30,7 +30,7 @@ import {
 } from '@/components/ui/accordion'
 
 useHead({
-  title: 'Hubungi Kami - Sarando',
+  title: 'Hubungi Kami',
   meta: [
     {
       name: 'description',
