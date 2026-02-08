@@ -40,8 +40,12 @@ defineOgImage({
 
 useSchemaOrg([
   defineWebPage({
-    name: computed(() => service.value ? `${service.value.name} - Sarando` : 'Layanan - Sarando'),
-    description: computed(() => service.value?.description ?? 'Detail layanan Sarando'),
+    name: computed(() =>
+      service.value ? `${service.value.name} - Sarando` : 'Layanan - Sarando',
+    ),
+    description: computed(
+      () => service.value?.description ?? 'Detail layanan Sarando',
+    ),
   }),
   defineBreadcrumb({
     itemListElement: [
@@ -59,6 +63,8 @@ const scrollToPricing = () => {
     element.scrollIntoView({ behavior: 'smooth' })
   }
 }
+
+const { formatRupiah } = useCurrency()
 </script>
 
 <template>
@@ -233,7 +239,14 @@ const scrollToPricing = () => {
                 class="w-full"
                 as-child
               >
-                <NuxtLink to="/kontak"> Pilih Paket </NuxtLink>
+                <NuxtLink
+                  :to="{
+                    path: '/kontak',
+                    query: { service: service.id, package: plan.id },
+                  }"
+                >
+                  Pilih Paket
+                </NuxtLink>
               </Button>
             </div>
           </div>
