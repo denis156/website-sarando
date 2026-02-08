@@ -29,16 +29,33 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
-useHead({
-  title: 'Hubungi Kami',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Hubungi tim Sarando untuk diskusi proyek, konsultasi IT, atau pertanyaan lainnya. Kami siap membantu mewujudkan solusi digital Anda.',
-    },
-  ],
+useHead({ title: 'Hubungi Kami' })
+useSeoMeta({
+  description:
+    'Hubungi tim Sarando untuk diskusi proyek, konsultasi IT, atau pertanyaan lainnya. Kami siap membantu mewujudkan solusi digital Anda.',
+  ogTitle: 'Hubungi Kami - Sarando',
+  ogDescription:
+    'Hubungi tim Sarando untuk diskusi proyek, konsultasi IT, atau pertanyaan lainnya. Kami siap membantu mewujudkan solusi digital Anda.',
+  ogImage: 'https://sarando.site/images/logo/og-default.png',
+  ogUrl: 'https://sarando.site/kontak',
+  twitterCard: 'summary_large_image',
 })
+
+defineOgImage({ url: '/images/logo/og-default.png' })
+
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'ContactPage',
+    'name': 'Hubungi Kami - Sarando',
+    'description': 'Hubungi tim Sarando untuk diskusi proyek, konsultasi IT, atau pertanyaan lainnya. Kami siap membantu mewujudkan solusi digital Anda.',
+  }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Beranda', item: '/' },
+      { name: 'Hubungi Kami' },
+    ],
+  }),
+])
 
 // Data API: Kontak & Layanan
 const { data: contact } = await useContact()
