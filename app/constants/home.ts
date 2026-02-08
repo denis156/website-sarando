@@ -1,3 +1,12 @@
+export const HOME_SHOWCASE_QUOTE
+  = 'Kami membuktikan bahwa dedikasi dari tanah kelahiran mampu melahirkan inovasi berstandar global. Mari bangun masa depan bersama Sarando.'
+
+export const HOME_LAYANAN_DESC
+  = 'Pendekatan holistik untuk kebutuhan digital Anda. Dari konsep hingga eksekusi presisi.'
+
+export const HOME_CTA_DESC
+  = 'Dari pengembangan sistem hingga strategi branding, kami punya solusi yang Anda butuhkan. Pelajari bagaimana kami dapat membantu bisnis Anda tumbuh.'
+
 export const SCROLL_REVEAL_TEXT
   = 'Di era digital, identitas seringkali hilang. Sarando hadir berbeda. Kami menyatukan Sara (Adat) dan Ndo (Kita). Bukan sekadar menulis kode, kami menerjemahkan nilai-nilai lokal menjadi solusi digital yang bernyawa. Dari Konawe untuk Dunia.'
 

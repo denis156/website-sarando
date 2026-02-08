@@ -4,6 +4,7 @@ import { BentoGridItem } from '@/components/ui/bento-grid'
 import { Sparkles } from '@/components/ui/sparkles'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { Button } from '@/components/ui/button'
+import { LAYANAN_HERO_TEXT } from '@/constants'
 
 useHead({ title: 'Layanan' })
 useSeoMeta({
@@ -115,7 +116,7 @@ const getGridClass = (index: number) => {
         </h1>
         <div class="max-w-2xl mx-auto">
           <TextGenerateEffect
-            words="Mengubah ide abstrak menjadi realitas digital yang presisi. Kami menyediakan ekosistem teknologi lengkap untuk pertumbuhan bisnis Anda."
+            :words="LAYANAN_HERO_TEXT"
             class="text-base md:text-xl text-muted-foreground font-light leading-relaxed"
             :duration="0.3"
           />

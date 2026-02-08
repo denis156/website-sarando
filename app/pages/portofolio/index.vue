@@ -5,6 +5,7 @@ import { BentoGridItem } from '@/components/ui/bento-grid'
 import { Sparkles } from '@/components/ui/sparkles'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { Button } from '@/components/ui/button'
+import { PORTOFOLIO_HERO_TEXT, PORTOFOLIO_NDA_TEXT } from '@/constants'
 
 useHead({ title: 'Portofolio' })
 useSeoMeta({
@@ -123,7 +124,7 @@ const getProjectImage = (project: Project) => {
         </h1>
         <div class="max-w-2xl mx-auto">
           <TextGenerateEffect
-            words="Karya terbaik kami yang memadukan estetika desain dan performa teknologi tinggi."
+            :words="PORTOFOLIO_HERO_TEXT"
             class="text-base md:text-xl text-muted-foreground font-light leading-relaxed"
             :duration="0.3"
           />
@@ -236,12 +237,7 @@ const getProjectImage = (project: Project) => {
         <!-- Privacy Disclaimer -->
         <div class="mt-16 text-center max-w-2xl mx-auto space-y-4">
           <p class="text-muted-foreground text-sm leading-relaxed italic">
-            "Masih banyak proyek strategis lainnya yang telah dikerjakan oleh
-            <span class="font-medium text-foreground">Denis Djodian Ardika</span>
-            dan tim <span class="font-medium text-foreground">Sarando</span>.
-            Karena kebijakan privasi klien dan
-            <span class="font-medium text-foreground">Non-Disclosure Agreements (NDA)</span>, detail proyek tersebut tidak dapat kami publikasikan secara
-            terbuka."
+            "{{ PORTOFOLIO_NDA_TEXT }}"
           </p>
         </div>
       </template>

@@ -8,7 +8,13 @@ import { AnimatedTestimonials } from '@/components/ui/animated-testimonials'
 import { CardSpotlight } from '@/components/ui/card-spotlight'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { SCROLL_REVEAL_TEXT, TESTIMONIALS } from '@/constants'
+import {
+  SCROLL_REVEAL_TEXT,
+  TESTIMONIALS,
+  HOME_SHOWCASE_QUOTE,
+  HOME_LAYANAN_DESC,
+  HOME_CTA_DESC,
+} from '@/constants'
 
 const { data: services } = await useServices()
 
@@ -171,9 +177,7 @@ useSchemaOrg([
               <p
                 class="text-sm md:text-lg text-muted-foreground leading-relaxed px-2"
               >
-                "Kami membuktikan bahwa dedikasi dari tanah kelahiran mampu
-                melahirkan inovasi berstandar global. Mari bangun masa depan
-                bersama Sarando."
+                "{{ HOME_SHOWCASE_QUOTE }}"
               </p>
             </div>
 
@@ -215,8 +219,7 @@ useSchemaOrg([
           <p
             class="text-muted-foreground/80 max-w-md text-left md:text-right text-lg font-light"
           >
-            Pendekatan holistik untuk kebutuhan digital Anda. <br>Dari konsep
-            hingga eksekusi presisi.
+            {{ HOME_LAYANAN_DESC }}
           </p>
         </div>
 
@@ -323,9 +326,7 @@ useSchemaOrg([
             <p
               class="max-w-2xl mx-auto text-sm md:text-lg text-muted-foreground font-light leading-relaxed px-4"
             >
-              Dari pengembangan sistem hingga strategi branding, kami punya
-              solusi yang Anda butuhkan. <br class="hidden md:block">
-              Pelajari bagaimana kami dapat membantu bisnis Anda tumbuh.
+              {{ HOME_CTA_DESC }}
             </p>
 
             <div

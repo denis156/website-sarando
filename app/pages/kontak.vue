@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Mail, MapPin, Phone, Send, Loader2 } from 'lucide-vue-next'
+import { FAQ_ITEMS } from '@/constants'
 import { Sparkles } from '@/components/ui/sparkles'
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import {
@@ -125,33 +126,7 @@ const handleSubmit = async () => {
   isLoading.value = false
 }
 
-// Data FAQ
-const faqItems = [
-  {
-    value: 'item-1',
-    title: 'Berapa lama waktu pengerjaan proyek?',
-    content:
-      'Waktu pengerjaan sangat bervariasi tergantung kompleksitas proyek. Untuk website profil perusahaan standar biasanya memakan waktu 2-4 minggu, sedangkan aplikasi web kustom bisa 2-3 bulan atau lebih.',
-  },
-  {
-    value: 'item-2',
-    title: 'Apakah ada layanan maintenance setelah proyek selesai?',
-    content:
-      'Tentu saja. Kami menyediakan paket maintenance bulanan untuk memastikan website atau aplikasi Anda tetap berjalan optimal, aman, dan update.',
-  },
-  {
-    value: 'item-3',
-    title: 'Bagaimana sistem pembayarannya?',
-    content:
-      'Kami biasanya menerapkan sistem pembayaran bertahap: 50% DP diawal, 30% setelah progress utama selesai, dan 20% pelunasan saat serah terima final.',
-  },
-  {
-    value: 'item-4',
-    title: 'Apakah bisa konsultasi dulu sebelum order?',
-    content:
-      'Sangat bisa! Konsultasi awal gratis. Kami ingin memahami kebutuhan bisnis Anda terlebih dahulu agar bisa memberikan solusi yang paling tepat.',
-  },
-]
+const faqItems = FAQ_ITEMS
 </script>
 
 <template>
@@ -460,7 +435,7 @@ const faqItems = [
                     id="message"
                     v-model="form.message"
                     placeholder="Ceritakan sedikit tentang kebutuhan Anda..."
-                    class="min-h-[150px] bg-background/50 resize-none p-4 border-muted focus-visible:ring-primary"
+                    class="min-h-37.5 bg-background/50 resize-none p-4 border-muted focus-visible:ring-primary"
                     required
                   />
                 </div>
